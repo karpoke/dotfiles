@@ -1,1 +1,7 @@
-/builds/
+**builds/
+**debug.js
+**.map
+**min.css
+**min.js
+**min.js.map
+**.svg
