@@ -56,7 +56,7 @@ __bak () {
 
 # get IPinfo
 __ipinfo () {
-    curl -s ipinfo.io/$1
+    curl -s ipinfo.io/"$1"
 }
 
 # to make sure special and critical system files are opened with the
