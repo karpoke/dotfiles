@@ -26,3 +26,13 @@ __cd () {
     OLDPWD="$oldpwd"
 }
 alias ..=__cd
+
+# to avoid `..` to be aliased by other scripts
+__alias () {
+    if [[ "$1" =~ \.\.=.+ ]]; then
+        false
+    else
+        builtin alias "$@"
+    fi
+}
+alias alias=__alias
