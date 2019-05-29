@@ -67,13 +67,13 @@ __vim () {
 
     fn="$(readlink -f "$1")"
     if [ "$fn" == "/etc/passwd" ]; then
-        /usr/bin/env sudo vipw -p
+        sudo vipw -p
     elif [ "$fn" == "/etc/shadow" ]; then
-        /usr/bin/env sudo vipw -s
+        sudo vipw -s
     elif [ "$fn" == "/etc/group" ]; then
-        /usr/bin/env sudo vigr
+        sudo vigr
     elif [ "$fn" == "/etc/sudoers" ]; then
-        /usr/bin/env sudo visudo
+        sudo visudo
     else
         # allow things like this:
         # vim ./bookcore/apps/conector/servicios/motor/motor.py:818
@@ -83,10 +83,10 @@ __vim () {
         if [[ -r "$(readlink -f "$fn")" && "$ln" =~ $re ]]; then
             vim "$fn" +"$ln"
         elif [ -n "$@" ]; then
-            /usr/bin/env vim "$@"
+            vim "$@"
         else
             # edit last opened file
-            /usr/bin/env vim -c "normal '0"
+            vim -c "normal '0"
         fi
     fi
 }
