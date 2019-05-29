@@ -14,7 +14,13 @@ alias grep='grep --color -i'
 alias ssh='ssh -C'
 
 # one-liner utilities
-alias myip='curl ifconfig.me'
+alias myip='curl -s ifconfig.me'
+
+# aliased functions defined below
+alias ..=__cd
+alias bak=__bak
+alias ipinfo=__ipinfo
+alias vim=__vim
 
 # improved cd'ing
 # examples:
@@ -42,23 +48,16 @@ __cd () {
     fi
     OLDPWD="$oldpwd"
 }
-alias ..=__cd
-
-# to avoid `..` to be aliased by other scripts
-__alias () {
-    if [[ "$1" =~ \.\.=.+ ]]; then
-        false
-    else
-        builtin alias "$@"
-    fi
-}
-alias alias=__alias
 
 # fast and easy back-up
 __bak () {
     [ -w "$1" ] && mv "$1"{,.bak}
 }
-alias bak=__bak
+
+# get IPinfo
+__ipinfo () {
+    curl -s ipinfo.io/$1
+}
 
 # to make sure special and critical system files are opened with the
 # addecuated commands. also make it easier open files into the
@@ -84,13 +83,23 @@ __vim () {
         ln=${@#*:}
         re='^[0-9]+$'
         if [[ -r "$(readlink -f "$fn")" && "$ln" =~ $re ]]; then
-            vim "$fn" +"$ln"
-        elif [ -n "$@" ]; then
-            vim "$@"
+            env vim "$fn" +"$ln"
+        elif [[ -n "$@" ]]; then
+            env vim "$@"
         else
             # edit last opened file
-            vim -c "normal '0"
+            env vim -c "normal '0"
         fi
     fi
 }
-alias vim=__vim
+
+# to avoid `..` to be aliased by other scripts. this must be at the end of the
+# file
+__alias () {
+    if [[ "$1" =~ \.\.=.+ ]]; then
+        false
+    else
+        builtin alias "$@"
+    fi
+}
+alias alias=__alias
