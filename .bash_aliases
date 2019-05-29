@@ -1,5 +1,19 @@
 #!/usr/bin/env bash
 
+# basics
+alias api='sudo apt install'
+alias apu='sudo apt update'
+alias apg='sudo apt upgrade'
+alias aps='apt search'
+alias aph='apt show'
+alias app='sudo apt autoremove && sudo apt clean && sudo apt autoclean'
+
+alias rm='rm -iv'
+alias mv='mv -iv'
+alias grep='grep --color -i'
+alias ssh='ssh -C'
+
+# improved cd'ing
 # examples:
 # `..` go up one directory
 # `.. 3` go up three directories
@@ -36,6 +50,12 @@ __alias () {
     fi
 }
 alias alias=__alias
+
+# fast and easy back-up
+__bak () {
+    [ -w "$1" ] && mv "$1"{,.bak}
+}
+alias bak=__bak
 
 # to make sure special and critical system files are opened with the
 # addecuated commands. also make it easier open files into the
