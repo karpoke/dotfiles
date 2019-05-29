@@ -36,3 +36,38 @@ __alias () {
     fi
 }
 alias alias=__alias
+
+# to make sure special and critical system files are opened with the
+# addecuated commands. also make it easier open files into the
+# desired line or the most recent opened file
+__vim () {
+    local fn
+    local ln
+    local re
+
+    fn="$(readlink -f "$1")"
+    if [ "$fn" == "/etc/passwd" ]; then
+        /usr/bin/env sudo vipw -p
+    elif [ "$fn" == "/etc/shadow" ]; then
+        /usr/bin/env sudo vipw -s
+    elif [ "$fn" == "/etc/group" ]; then
+        /usr/bin/env sudo vigr
+    elif [ "$fn" == "/etc/sudoers" ]; then
+        /usr/bin/env sudo visudo
+    else
+        # allow things like this:
+        # vim ./bookcore/apps/conector/servicios/motor/motor.py:818
+        fn=${@%:*}
+        ln=${@#*:}
+        re='^[0-9]+$'
+        if [[ -r "$(readlink -f "$fn")" && "$ln" =~ $re ]]; then
+            vim "$fn" +"$ln"
+        elif [ -n "$@" ]; then
+            /usr/bin/env vim "$@"
+        else
+            # edit last opened file
+            /usr/bin/env vim -c "normal '0"
+        fi
+    fi
+}
+alias vim=__vim
