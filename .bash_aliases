@@ -13,6 +13,9 @@ alias mv='mv -iv'
 alias grep='grep --color -i'
 alias ssh='ssh -C'
 
+# one-liner utilities
+alias myip='curl ifconfig.me'
+
 # improved cd'ing
 # examples:
 # `..` go up one directory
