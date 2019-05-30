@@ -1,17 +1,19 @@
 #!/usr/bin/env bash
 
 # basics
+alias rm='rm -iv'
+alias mv='mv -iv'
+alias grep='grep --color -i'
+alias ssh='ssh -C'
+
+# apt
 alias api='sudo apt install'
+alias apd='sudo apt list --upgradable'
 alias apu='sudo apt update'
 alias apg='sudo apt upgrade'
 alias aps='apt search'
 alias aph='apt show'
 alias app='sudo apt autoremove && sudo apt clean && sudo apt autoclean'
-
-alias rm='rm -iv'
-alias mv='mv -iv'
-alias grep='grep --color -i'
-alias ssh='ssh -C'
 
 # one-liner utilities
 alias myip='curl -s ifconfig.me'
