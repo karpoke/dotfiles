@@ -5,6 +5,7 @@ alias rm='rm -iv'
 alias mv='mv -iv'
 alias grep='grep --color -i'
 alias ssh='ssh -C'
+alias xargs='xargs -r'
 
 # apt
 alias api='sudo apt install'
@@ -19,8 +20,9 @@ alias app='sudo apt autoremove && sudo apt clean && sudo apt autoclean'
 alias myip='curl -s ifconfig.me'
 
 # aliased functions defined below
-alias ..=__cd
+alias ..=__..
 alias bak=__bak
+alias cd=__cd
 alias ipinfo=__ipinfo
 alias vim=__vim
 
@@ -29,7 +31,7 @@ alias vim=__vim
 # `..` go up one directory
 # `.. 3` go up three directories
 # `.. foo` go up to the most upper directory whose name is `foo`
-__cd () {
+__.. () {
     local n
     local oldpwd
     local path
@@ -49,6 +51,11 @@ __cd () {
         builtin cd "${PWD/$1*/$1}"
     fi
     OLDPWD="$oldpwd"
+}
+
+# go to directory even if a file is passed as param
+__cd () {
+    [ -f "$1" ] && builtin cd "$(dirname "$1")"
 }
 
 # fast and easy back-up
