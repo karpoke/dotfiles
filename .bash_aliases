@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# some useful sources
+# https://github.com/Bash-it/bash-it/tree/master/aliases/available
+# https://github.com/ohmybash/oh-my-bash/tree/master/aliases
+# https://www.commandlinefu.com/commands/browse
+
 # basics
 alias rm='rm -iv'
 alias mv='mv -iv'
