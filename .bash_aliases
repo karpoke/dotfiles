@@ -73,7 +73,7 @@ __cd () {
     elif [ -z "$1" ]; then
         builtin cd
     else
-        builtin cd $*
+        builtin cd "$@"
     fi
 }
 
@@ -106,16 +106,16 @@ __vim () {
         sudo visudo
     else
         # allow things like this:
-        # vim ./bookcore/apps/conector/servicios/motor/motor.py:818
-        fn=${*%:*}
-        ln=${*#*:}
+        # vim foo/bar.c:123
+        fn=${1%:*}
+        ln=${1#*:}
         re='^[0-9]+$'
         if [[ -r "$(readlink -f "$fn")" && "$ln" =~ $re ]]; then
             env vim "$fn" +"$ln"
         elif [[ -n "$@" ]]; then
             env vim "$@"
         else
-            # edit last opened file
+            # edit last opened file on the last line
             env vim -c "normal '0"
         fi
     fi
