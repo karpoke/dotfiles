@@ -24,12 +24,12 @@ alias app='sudo apt autoremove && sudo apt clean && sudo apt autoclean'
 # one-liner utilities
 alias dklcip='docker inspect -f "{{.NetworkSettings.IPAddress}}" $(docker ps -l -q)'
 alias dkelc='docker exec -it $(dklcid) bash --login'
-
 alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection clipboard -o"
-
 alias cls='clear'
 alias myip='curl -s ifconfig.me'
+alias clock='while sleep 1;do tput sc;tput cup 0 $(($(tput cols)-29));date;tput rc;done &'
+alias timewatch='(trap '\''kill -sSIGHUP $PPID'\'' SIGINT && echo "Stop it with ^D" && time read)'
 
 # shellcheck disable=SC2139 disable=SC1083
 alias best_ubuntu_server="curl -s http://mirrors.ubuntu.com/mirrors.txt | xargs -n1 -I {} sh -c 'echo $(curl -r 0-102400 -s -w %{speed_download} -o /dev/null {}/ls-lR.gz) {}' | sort -gr | head -3 | awk '{ print $2 }'"
