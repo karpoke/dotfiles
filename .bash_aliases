@@ -31,6 +31,9 @@ alias pbpaste="xclip -selection clipboard -o"
 alias cls='clear'
 alias myip='curl -s ifconfig.me'
 
+# shellcheck disable=SC2139 disable=SC1083
+alias best_ubuntu_server="curl -s http://mirrors.ubuntu.com/mirrors.txt | xargs -n1 -I {} sh -c 'echo $(curl -r 0-102400 -s -w %{speed_download} -o /dev/null {}/ls-lR.gz) {}' | sort -gr | head -3 | awk '{ print $2 }'"
+
 # https://github.com/nvbn/thefuck
 alias fuck='eval $(thefuck $(fc -ln -1))'
 
