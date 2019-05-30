@@ -16,11 +16,13 @@ alias aps='apt search'
 alias aph='apt show'
 alias app='sudo apt autoremove && sudo apt clean && sudo apt autoclean'
 
-# docker
+# one-liner utilities
 alias dklcip='docker inspect -f "{{.NetworkSettings.IPAddress}}" $(docker ps -l -q)'
 alias dkelc='docker exec -it $(dklcid) bash --login'
 
-# one-liner utilities
+alias pbcopy="xclip -selection clipboard"
+alias pbpaste="xclip -selection clipboard -o"
+
 alias cls='clear'
 alias myip='curl -s ifconfig.me'
 
