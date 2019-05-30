@@ -17,7 +17,14 @@ alias aph='apt show'
 alias app='sudo apt autoremove && sudo apt clean && sudo apt autoclean'
 
 # one-liner utilities
+alias cls='clear'
 alias myip='curl -s ifconfig.me'
+
+# https://github.com/nvbn/thefuck
+alias fuck='eval $(thefuck $(fc -ln -1))'
+
+# http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
+alias j='jump'
 
 # aliased functions defined below
 alias ..=__..
@@ -55,7 +62,15 @@ __.. () {
 
 # go to directory even if a file is passed as param
 __cd () {
-    [ -f "$1" ] && builtin cd "$(dirname "$1")"
+    local path
+    if [ -f "$1" ]; then
+        path="$(dirname "$1")"
+        builtin cd "$path"
+    elif [ -z "$1" ]; then
+        builtin cd
+    else
+        builtin cd $*
+    fi
 }
 
 # fast and easy back-up
@@ -88,8 +103,8 @@ __vim () {
     else
         # allow things like this:
         # vim ./bookcore/apps/conector/servicios/motor/motor.py:818
-        fn=${@%:*}
-        ln=${@#*:}
+        fn=${*%:*}
+        ln=${*#*:}
         re='^[0-9]+$'
         if [[ -r "$(readlink -f "$fn")" && "$ln" =~ $re ]]; then
             env vim "$fn" +"$ln"
