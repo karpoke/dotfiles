@@ -28,7 +28,7 @@ alias xpaste='xclip -selection clipboard -o'
 # one-liner utilities
 __bak () { [ -w "$1" ] && mv "$1"{,.bak}; }
 __ipinfo () { curl -s ipinfo.io/"$1"; }
-__cmd2img () { convert -font courier -pointsize 12 label:"$("$@")" -trim output.png; }
+__cmd2img () { convert -font courier -pointsize 12 -background black -fill white label:"$("$@")" -trim output.png; }
 
 alias bak=__bak
 alias clock='while sleep 1;do tput sc;tput cup 0 $(($(tput cols)-29));date;tput rc;done &'
