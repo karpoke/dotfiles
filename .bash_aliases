@@ -6,31 +6,36 @@
 # https://www.commandlinefu.com/commands/browse
 
 # basics
-alias rm='rm -iv'
-alias mv='mv -iv'
+
+# shortcuts
+alias apd='sudo apt list --upgradable'
+alias apg='sudo apt upgrade'
+alias aph='apt show'
+alias api='sudo apt install'
+alias app='sudo apt autoremove && sudo apt clean && sudo apt autoclean'
+alias aps='apt search'
+alias apu='sudo apt update'
+alias cls='clear'
 alias grep='grep --color -i'
+alias mv='mv -iv'
+alias perm='stat --printf "%a %n \n"'
+alias rm='rm -iv'
 alias ssh='ssh -C'
 alias xargs='xargs -r'
-
-# apt
-alias api='sudo apt install'
-alias apd='sudo apt list --upgradable'
-alias apu='sudo apt update'
-alias apg='sudo apt upgrade'
-alias aps='apt search'
-alias aph='apt show'
-alias app='sudo apt autoremove && sudo apt clean && sudo apt autoclean'
+alias xcopy='xclip -selection clipboard'
+alias xpaste='xclip -selection clipboard -o'
 
 # one-liner utilities
+__bak () { [ -w "$1" ] && mv "$1"{,.bak}; }
+__ipinfo () { curl -s ipinfo.io/"$1"; };
+
+alias bak=__bak
 alias clock='while sleep 1;do tput sc;tput cup 0 $(($(tput cols)-29));date;tput rc;done &'
-alias cls='clear'
 alias dkelc='docker exec -it $(dklcid) bash --login'
 alias dklcip='docker inspect -f "{{.NetworkSettings.IPAddress}}" $(docker ps -l -q)'
+alias ipinfo=__ipinfo
 alias make1mb='truncate -s 1m ./1MB.dat'
 alias myip='curl -s ifconfig.me'
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
-alias perm='stat --printf "%a %n \n"'
 alias timewatch='(trap '\''kill -sSIGHUP $PPID'\'' SIGINT && echo "Stop it with ^D" && time read)'
 
 # shellcheck disable=SC2139 disable=SC1083
@@ -44,9 +49,7 @@ alias j='jump'
 
 # aliased functions defined below
 alias ..=__..
-alias bak=__bak
 alias cd=__cd
-alias ipinfo=__ipinfo
 alias vim=__vim
 
 # improved cd'ing
@@ -87,16 +90,6 @@ __cd () {
     else
         builtin cd "$@"
     fi
-}
-
-# fast and easy back-up
-__bak () {
-    [ -w "$1" ] && mv "$1"{,.bak}
-}
-
-# get IPinfo
-__ipinfo () {
-    curl -s ipinfo.io/"$1"
 }
 
 # to make sure special and critical system files are opened with the
