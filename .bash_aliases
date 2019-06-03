@@ -18,12 +18,12 @@ alias apu='sudo apt update'
 alias cls='clear'
 alias grep='grep --color -i'
 alias mv='mv -iv'
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
 alias perm='stat --printf "%a %n \n"'
 alias rm='rm -iv'
 alias ssh='ssh -C'
 alias xargs='xargs -r'
-alias xcopy='xclip -selection clipboard'
-alias xpaste='xclip -selection clipboard -o'
 
 # one-liner utilities
 __bak () { [ -w "$1" ] && mv "$1"{,.bak}; }
