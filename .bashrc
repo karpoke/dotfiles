@@ -2,9 +2,9 @@
 export DOTFILES_DIR="${BASH_SOURCE%/*}"
 
 export CDPATH=:..:~:~/projects:$CDPATH
-
-HISTSIZE=20000000
-HISTFILESIZE=20000000
+export EDITOR=/usr/bin/vim
+export HISTSIZE=20000000
+export HISTFILESIZE=20000000
 
 [ -f "$DOTFILES_DIR/.bash_aliases" ] && source "$DOTFILES_DIR/.bash_aliases"
 [ -f "$DOTFILES_DIR/.jump.sh" ] && source "$DOTFILES_DIR/.jump.sh"
