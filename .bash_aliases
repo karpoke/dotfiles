@@ -40,6 +40,8 @@ alias make1mb='truncate -s 1m ./1MB.dat'
 alias myip='curl -s ifconfig.me'
 alias http_server='python -m SimpleHTTPServer'
 alias smtp_debug_server='python -m smtpd -n -c DebuggingServer localhost:1025'
+# shellcheck disable=SC2142
+alias remove_duplicated_lines='awk '\''!x[$0]++'\'''
 alias timewatch='(trap '\''kill -sSIGHUP $PPID'\'' SIGINT && echo "Stop it with ^D" && time read)'
 
 # shellcheck disable=SC2139 disable=SC1083
