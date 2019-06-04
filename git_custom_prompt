@@ -86,10 +86,26 @@ PathShort="\w"
 PathFull="\W"
 NewLine="\n"
 Jobs="\j"
+Username="\u"
+Hostname="\h"
 
+__status () {
+    status=$?
+    if [ "$status" -gt 0 ]; then
+        echo "$status "
+    fi
+}
+
+__jobs () {
+    num=$(jobs | wc -l)
+    if [ "$num" -gt 0 ]; then
+        echo "#$num "
+    fi
+}
 
 #if [ $status -eq 0 ]; then echo -n " OK"; else echo -n " [$status]"; fi;\
-export PS1=$IWhite$Time24h$Color_Off'$(status=$?;git branch &>/dev/null;\
+export PS1="${IRed}\$(__status)${ICyan}\$(__jobs)${IPurple}${Username} ${Color_Off}@ ${IBlue}${Hostname} "
+export PS1=$PS1$IWhite$Time24h$Color_Off'$(status=$?;git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
   echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
   if [ "$?" -eq "0" ]; then \
