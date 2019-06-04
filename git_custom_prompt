@@ -104,7 +104,7 @@ __jobs () {
 }
 
 __mail () {
-    num=$(mail -L :u | grep -v "No messages" | wc -l)
+    num=$(mail -L :u 2>&1 | grep -v "No message" | grep -v "No mail" | wc -l)
     if [ "$num" -gt 0 ]; then
         echo "✉ $num "
     fi
@@ -117,9 +117,8 @@ __cron () {
     fi
 }
 
-#if [ $status -eq 0 ]; then echo -n " OK"; else echo -n " [$status]"; fi;\
 export PS1="${IRed}\$(__status)${ICyan}\$(__jobs)${IYellow}\$(__mail)${Green}\$(__cron)${IPurple}${Username} ${Color_Off}@ ${IBlue}${Hostname} "
-export PS1=$PS1$IWhite$Time24h$Color_Off'$(status=$?;git branch &>/dev/null;\
+export PS1=$PS1$IWhite$Time24h$Color_Off'$(git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
   echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
   if [ "$?" -eq "0" ]; then \
