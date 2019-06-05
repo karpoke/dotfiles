@@ -27,8 +27,9 @@ alias xargs='xargs -r'
 
 # one-liner utilities
 __bak () { [ -w "$1" ] && mv "$1"{,.bak}; }
-__ipinfo () { curl -s ipinfo.io/"$1"; }
 __cmd2img () { convert -font courier -pointsize 12 -background black -fill white label:"$("$@")" -trim output.png; }
+__ipinfo () { curl -s "http://ipinfo.io/$1"; }
+__rip_audio () { output="${1%.*}-ripped.${1##*.}"; echo $output; mplayer -ao pcm -vo null -vc dummy -dumpaudio -dumpfile "$output" "$1"; }
 
 alias bak=__bak
 alias clock='while sleep 1;do tput sc;tput cup 0 $(($(tput cols)-29));date;tput rc;done &'
@@ -39,9 +40,10 @@ alias ipinfo=__ipinfo
 alias make1mb='truncate -s 1m ./1MB.dat'
 alias myip='curl -s ifconfig.me'
 alias http_server='python -m SimpleHTTPServer'
-alias smtp_debug_server='python -m smtpd -n -c DebuggingServer localhost:1025'
 # shellcheck disable=SC2142
 alias remove_duplicated_lines='awk '\''!x[$0]++'\'''
+alias rip_audio=__rip_audio
+alias smtp_debug_server='python -m smtpd -n -c DebuggingServer localhost:1025'
 alias timewatch='(trap '\''kill -sSIGHUP $PPID'\'' SIGINT && echo "Stop it with ^D" && time read)'
 
 # shellcheck disable=SC2139 disable=SC1083
