@@ -97,7 +97,7 @@ __status () {
 }
 
 __jobs () {
-    num=$(jobs | wc -l)
+    num=$(jobs -p | wc -l)
     if [ "$num" -gt 0 ]; then
         echo "⚙ $num "
     fi
