@@ -5,7 +5,25 @@
 # https://github.com/ohmybash/oh-my-bash/tree/master/aliases
 # https://www.commandlinefu.com/commands/browse
 
-# basics
+# remember:
+# ^xe       Open an editor and execute a command
+# fc        Rapidly invoke an editor to write a command
+# !:-       Insert the last command without the last argument
+# <Esc> *
+# !*        All parameter from the previous command line
+# !!        Last command
+# $_        Las argument
+# ^foo^bar  Replace foo by bar in the previous command
+# Alt+.     Last argument from the last command
+# Esc+.     "
+# Esc+_
+# Alt+num+. n-th argument from the last command
+# <Esc>+*   Insert the results of an autocmpletion
+
+# TODO:
+# intercept stdout/stderr:  strace -ff -e trace=write -e write=1,2 -p SOME_PID
+# show apps that use the internet connection: ss -p
+
 
 # shortcuts
 alias apd='sudo apt list --upgradable'
@@ -22,6 +40,7 @@ alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias perm='stat --printf "%a %n \n"'
 alias rm='rm -iv'
+alias rsync='rsync -vh'
 alias ssh='ssh -C'
 alias xargs='xargs -r'
 
