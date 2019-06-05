@@ -45,23 +45,23 @@ alias ssh='ssh -C'
 alias xargs='xargs -r'
 
 # one-liner utilities
-__bak () { [ -w "$1" ] && mv "$1"{,.bak}; }
-__cmd2img () { convert -font courier -pointsize 12 -background black -fill white label:"$("$@")" -trim output.png; }
-__ipinfo () { curl -s "http://ipinfo.io/$1"; }
-__rip_audio () { output="${1%.*}-ripped.${1##*.}"; mplayer -ao pcm -vo null -vc dummy -dumpaudio -dumpfile "$output" "$1"; }
+__k_bak () { [ -w "$1" ] && mv "$1"{,.bak}; }
+__k_cmd2img () { convert -font courier -pointsize 12 -background black -fill white label:"$("$@")" -trim output.png; }
+__k_ipinfo () { curl -s "http://ipinfo.io/$1"; }
+__k_rip_audio () { output="${1%.*}-ripped.${1##*.}"; mplayer -ao pcm -vo null -vc dummy -dumpaudio -dumpfile "$output" "$1"; }
 
-alias bak=__bak
+alias bak=__k_bak
 alias clock='while sleep 1;do tput sc;tput cup 0 $(($(tput cols)-29));date;tput rc;done &'
-alias cmd2img=__cmd2img
+alias cmd2img=__k_cmd2img
 alias dkelc='docker exec -it $(dklcid) bash --login'
 alias dklcip='docker inspect -f "{{.NetworkSettings.IPAddress}}" $(docker ps -l -q)'
-alias ipinfo=__ipinfo
+alias ipinfo=__k_ipinfo
 alias make1mb='truncate -s 1m ./1MB.dat'
 alias myip='curl -s ifconfig.me'
 alias http_server='python -m SimpleHTTPServer'
 # shellcheck disable=SC2142
 alias remove_duplicated_lines='awk '\''!x[$0]++'\'''
-alias rip_audio=__rip_audio
+alias rip_audio=__k_rip_audio
 alias smtp_debug_server='python -m smtpd -n -c DebuggingServer localhost:1025'
 alias timewatch='(trap '\''kill -sSIGHUP $PPID'\'' SIGINT && echo "Stop it with ^D" && time read)'
 
@@ -75,16 +75,16 @@ alias fuck='eval $(thefuck $(fc -ln -1))'
 alias j='jump'
 
 # aliased functions defined below
-alias ..=__..
-alias cd=__cd
-alias vim=__vim
+alias ..=__k_..
+alias cd=__k_cd
+alias vim=__k_vim
 
 # improved cd'ing
 # examples:
 # `..` go up one directory
 # `.. 3` go up three directories
 # `.. foo` go up to the most upper directory whose name is `foo`
-__.. () {
+__k_.. () {
     local n
     local oldpwd
     local path
@@ -107,7 +107,7 @@ __.. () {
 }
 
 # go to directory even if a file is passed as param
-__cd () {
+__k_cd () {
     local path
     if [ -f "$1" ]; then
         path="$(dirname "$1")"
@@ -122,7 +122,7 @@ __cd () {
 # to make sure special and critical system files are opened with the
 # addecuated commands. also make it easier open files into the
 # desired line or the most recent opened file
-__vim () {
+__k_vim () {
     local fn
     local ln
     local re
@@ -155,11 +155,11 @@ __vim () {
 
 # to avoid `..` to be aliased by other scripts. this must be at the end of the
 # file
-__alias () {
+__k_alias () {
     if [[ "$1" =~ \.\.=.+ ]]; then
         false
     else
         builtin alias "$@"
     fi
 }
-alias alias=__alias
+alias alias=__k_alias
