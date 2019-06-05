@@ -5,10 +5,15 @@ export CDPATH=:..:~:~/projects:$CDPATH
 export EDITOR=/usr/bin/vim
 export HISTSIZE=20000000
 export HISTFILESIZE=20000000
+export MANPAGER='less -s -M +Gg -X'
+
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell
 
 [ -f "$DOTFILES_DIR/.bash_aliases" ] && source "$DOTFILES_DIR/.bash_aliases"
 [ -f "$DOTFILES_DIR/.jump.sh" ] && source "$DOTFILES_DIR/.jump.sh"
 [ -f "$DOTFILES_DIR/git_custom_prompt" ] && source "$DOTFILES_DIR/git_custom_prompt"
+[ -f "$DOTFILES_DIR/.less_termcap" ] && source "$DOTFILES_DIR/.less_termcap"
 
 # https://github.com/junegunn/fzf/
 # https://www.mankier.com/1/fzf
@@ -21,6 +26,3 @@ command -v pbcopy > /dev/null && export FZF_CTRL_T_OPTS="$FZF_CTRL_T_OPTS --bind
 command -v blsd > /dev/null && export FZF_ALT_C_COMMAND='blsd'
 command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 export FZF_CTRL_R_OPTS='--sort --exact --preview "echo {}" --preview-window down:3:hidden:wrap --bind "?:toggle-preview"'
-
-# Autocorrect typos in path names when using `cd`
-shopt -s cdspell
