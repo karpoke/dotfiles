@@ -48,7 +48,7 @@ alias xargs='xargs -r'
 __bak () { [ -w "$1" ] && mv "$1"{,.bak}; }
 __cmd2img () { convert -font courier -pointsize 12 -background black -fill white label:"$("$@")" -trim output.png; }
 __ipinfo () { curl -s "http://ipinfo.io/$1"; }
-__rip_audio () { output="${1%.*}-ripped.${1##*.}"; echo $output; mplayer -ao pcm -vo null -vc dummy -dumpaudio -dumpfile "$output" "$1"; }
+__rip_audio () { output="${1%.*}-ripped.${1##*.}"; mplayer -ao pcm -vo null -vc dummy -dumpaudio -dumpfile "$output" "$1"; }
 
 alias bak=__bak
 alias clock='while sleep 1;do tput sc;tput cup 0 $(($(tput cols)-29));date;tput rc;done &'
