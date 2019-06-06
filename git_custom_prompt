@@ -89,35 +89,35 @@ Jobs="\j"
 Username="\u"
 Hostname="\h"
 
-__status () {
+__k_status () {
     status=$?
     if [ "$status" -gt 0 ]; then
         echo "⚡ $status "
     fi
 }
 
-__jobs () {
+__k_jobs () {
     num=$(jobs -p | wc -l)
     if [ "$num" -gt 0 ]; then
         echo "⚙ $num "
     fi
 }
 
-__mail () {
+__k_mail () {
     num=$(mail -L :u 2>&1 | grep -v "No message" | grep -v "No mail" | wc -l)
     if [ "$num" -gt 0 ]; then
         echo "✉ $num "
     fi
 }
 
-__cron () {
+__k_cron () {
     num=$(atq | wc -l)
     if [ "$num" -gt 0 ]; then
         echo "⏰ $num "
     fi
 }
 
-export PS1="${IRed}\$(__status)${ICyan}\$(__jobs)${IYellow}\$(__mail)${Green}\$(__cron)${IPurple}${Username} ${Color_Off}@ ${IBlue}${Hostname} "
+export PS1="$IRed\$(__k_status)$ICyan\$(__k_jobs)$IYellow\$(__k_mail)$Green\$(__k_cron)$IPurple$Username ${Color_Off}@ $IBlue$Hostname "
 export PS1=$PS1$IWhite$Time24h$Color_Off'$(git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
   echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
