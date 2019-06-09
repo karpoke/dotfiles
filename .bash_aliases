@@ -97,7 +97,7 @@ __k_.. () {
         path="."
         while [ $n -gt 0 -a "$PWD" != "/" ]; do
             path="$path/.."
-            n=$((n-1))
+            ((n--))
         done
         builtin cd "$path"
     else
