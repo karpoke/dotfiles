@@ -1,0 +1,78 @@
+[user]
+    email = karpoke+github@gmail.com
+    name = karpoke
+[push]
+    default = simple
+[core]
+    editor = vim
+    excludesfile = ~/.gitignore
+    path = ~/foo/.gitconfig
+[include]
+    recurse = true
+[diff]
+    tool = vimdiff
+[merge]
+    tool = kdiff3
+[merge-tool "kdiff3"]
+    trustExitCode = false
+[alias]
+    # usefull resources:
+    # https://www.atlassian.com/blog/git/advanced-git-aliases
+    # https://haacked.com/archive/2014/07/28/github-flow-aliases/
+    # https://git.wiki.kernel.org/index.php/Aliases 
+    # http://jondavidjohn.com/git-aliases-parameters/
+    # https://stevenharman.net/git-clean-delete-already-merged-branches
+    # https://zachholman.com/talk/how-github-uses-github-to-build-github/
+
+    diff = diff --color=always
+    log = log --color=always
+
+    br = branch
+    ci = commit
+    ca = commit -a
+    cia = commit -a --amend -C HEAD
+    co = checkout
+    df = diff
+    diffc = diff --cached
+    diffh = diff HEAD
+    lg = log -p
+    st = status
+
+    # hg equivalencies
+    forget = rm --cached
+    in = !git fetch && git log ..FETCH_HEAD
+    out = !git fetch && git log FETCH_HEAD..
+    parents = show --pretty=format:'%P' -s
+    paths = remote -v
+    purge = clean -fd
+
+    # undo last commit (non pushed)
+    undolast = "!f() { git reset HEAD~1 --soft && git reset HEAD .; }; f"
+
+    # clean all merged branches to master (except develop and master itself)
+    bclean = "!f() { bn=\"${1-master}\"; git branch --merged \"$bn\" | grep -Ev \" (master|develop)$\" | xargs -r git branch -d; }; f"
+
+    # commits came since last command (git new HEAD)
+    new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+
+    # simple diff ignoring line number changes
+    sortdiff = !sh -c 'git diff "$@" | grep "^[+-]" | sort --key=1.2 | uniq -u -s1'
+
+    who = "!sh -c 'git shortlog -s -- | sort -nk1'"
+    whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+    whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+    edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim `f`"
+    add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
+    graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
+
+    # use: git alias new_alias original_command
+    alias = "!sh -c '[ $# = 2 ] && git config --global alias.\"$1\" \"$2\" && exit 0 || echo \"usage: git alias <new alias> <original command>\" >&2 && exit 1' -"
+    aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+
+    # changes in a branch since it was forked
+    # git forkdiff master my_branch_
+    forkdiff = !bash -c 'git diff $(git merge-base "$1" "$2") "$2" "${@: 3}" ' -
+
+    # finding the right commit
+    abbr = "!sh -c 'git rev-list --all | grep ^$1 | while read commit; do git --no-pager log -n1 --pretty=format:\"%H %ci %an %s%n\" $commit; done' -"
+
