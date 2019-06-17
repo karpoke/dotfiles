@@ -6,6 +6,12 @@ function jump {
 function mark {
     mkdir -p "$MARKPATH"
     ln -s "$(pwd)" "$MARKPATH/$1"
+    if [ "$?" -eq 1 ]; then
+        read -p "Overwrite? [y/N] " yn
+        if [ "$yn" = "y" ]; then
+            ln -fs "$(pwd)" "$MARKPATH/$1"
+        fi
+    fi
 }
 function unmark {
     rm -i "$MARKPATH/$1"
