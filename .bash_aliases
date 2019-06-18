@@ -45,6 +45,11 @@ alias rsync='rsync -vh'
 alias ssh='ssh -C'
 alias xargs='xargs -r'
 
+# https://cirw.in/blog/bracketed-paste
+# http://thejh.net/misc/website-terminal-copy-paste
+alias enable_bracketed_paste_mode='printf "\e[?2004h"'
+alias disable_bracketed_paste_mode='printf "\e[?2004l"'
+
 # one-liner utilities
 __k_bak () { [ -w "$1" ] && mv "$1"{,.bak}; }
 __k_cmd2img () { convert -font courier -pointsize 12 -background black -fill white label:"$("$@")" -trim output.png; }
