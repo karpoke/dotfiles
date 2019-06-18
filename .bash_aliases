@@ -50,6 +50,8 @@ alias xargs='xargs -r'
 alias enable_bracketed_paste_mode='printf "\e[?2004h"'
 alias disable_bracketed_paste_mode='printf "\e[?2004l"'
 
+alias upgrade_fzf='cd ~/.fzf && git pull && ./install'
+
 # one-liner utilities
 __k_bak () { [ -w "$1" ] && mv "$1"{,.bak}; }
 __k_cmd2img () { convert -font courier -pointsize 12 -background black -fill white label:"$("$@")" -trim output.png; }
