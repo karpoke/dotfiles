@@ -9,6 +9,11 @@ sudo apt install \
     vim \
     virtualenvwrapper
 
+pip install \
+    ipython
+
+ipython create profile
+
 # check before install this
 
 # fzf: https://github.com/junegunn/fzf#installation
