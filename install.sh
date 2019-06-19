@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
 
 sudo apt install \
-    autoenv \
+    dsh \
     highlight \
     htop \
-    silversearcher-ag \
     python-pip \
+    silversearcher-ag \
     vim \
     virtualenvwrapper
 
