@@ -1,4 +1,4 @@
-# https://ss64.com/bash/syntax-inputrc.html
+# man readline
 
 $include /etc/inputrc
 
@@ -13,3 +13,5 @@ set visible-stats On
 
 # https://cirw.in/blog/bracketed-paste
 set enable-bracketed-paste on
+
+# set editing-mode vi
