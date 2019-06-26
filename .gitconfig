@@ -19,7 +19,7 @@
     # usefull resources:
     # https://www.atlassian.com/blog/git/advanced-git-aliases
     # https://haacked.com/archive/2014/07/28/github-flow-aliases/
-    # https://git.wiki.kernel.org/index.php/Aliases 
+    # https://git.wiki.kernel.org/index.php/Aliases
     # http://jondavidjohn.com/git-aliases-parameters/
     # https://stevenharman.net/git-clean-delete-already-merged-branches
     # https://zachholman.com/talk/how-github-uses-github-to-build-github/
@@ -37,6 +37,7 @@
     diffh = diff HEAD
     lg = log -p
     st = status
+    st-only-names = "!f() { git status --porcelain | sed s/^...//; }; f"
 
     # hg equivalencies
     forget = rm --cached
