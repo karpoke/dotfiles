@@ -12,7 +12,7 @@ sudo apt install \
 pip install \
     ipython
 
-ipython create profile
+ipython profile create
 
 # check before install this
 
