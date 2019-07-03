@@ -583,7 +583,7 @@
 #
 #   # Python 2.x
 #   imp.reload(module)
-#   # Python 3.0–3.3
+#   # Python 3.0-3.3
 #   imp.reload(module)
 #   # Python 3.4+
 #   importlib.reload(module)
