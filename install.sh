@@ -6,6 +6,7 @@ sudo apt install \
     htop \
     python-pip \
     silversearcher-ag \
+    tmux \
     vim \
     virtualenvwrapper
 
