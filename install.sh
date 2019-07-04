@@ -5,6 +5,7 @@ sudo apt install \
     highlight \
     htop \
     python-pip \
+    shellcheck \
     silversearcher-ag \
     tmux \
     vim \
