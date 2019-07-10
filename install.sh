@@ -4,6 +4,7 @@ sudo apt install \
     dsh \
     highlight \
     htop \
+    ipcalc \
     python-pip \
     shellcheck \
     silversearcher-ag \
