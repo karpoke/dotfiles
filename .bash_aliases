@@ -57,8 +57,10 @@ __k_bak () { [ -r "$1" ] && mv "$1"{,.bak}; }
 __k_cmd2img () { convert -font courier -pointsize 12 -background black -fill white label:"$("$@")" -trim output.png; }
 __k_ipinfo () { curl -s "http://ipinfo.io/$1"; }
 __k_rip_audio () { output="${1%.*}-ripped.${1##*.}"; mplayer -ao pcm -vo null -vc dummy -dumpaudio -dumpfile "$output" "$1"; }
+__k_cat () { [ -d "$1" ] && ls "$1"; }
 
 alias bak=__k_bak
+alias cat=__k_cat
 alias clock='while sleep 1;do tput sc;tput cup 0 $(($(tput cols)-29));date;tput rc;done &'
 alias cmd2img=__k_cmd2img
 alias dkelc='docker exec -it $(dklcid) bash --login'
