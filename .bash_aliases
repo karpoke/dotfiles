@@ -53,7 +53,7 @@ alias disable_bracketed_paste_mode='printf "\e[?2004l"'
 alias upgrade_fzf='cd ~/.fzf && git pull && ./install'
 
 # one-liner utilities
-__k_bak () { [ -w "$1" ] && mv "$1"{,.bak}; }
+__k_bak () { [ -r "$1" ] && mv "$1"{,.bak}; }
 __k_cmd2img () { convert -font courier -pointsize 12 -background black -fill white label:"$("$@")" -trim output.png; }
 __k_ipinfo () { curl -s "http://ipinfo.io/$1"; }
 __k_rip_audio () { output="${1%.*}-ripped.${1##*.}"; mplayer -ao pcm -vo null -vc dummy -dumpaudio -dumpfile "$output" "$1"; }
