@@ -2,12 +2,14 @@
 
 sudo apt install \
     dsh \
+    git \
     highlight \
     htop \
     ipcalc \
     python-pip \
     shellcheck \
     silversearcher-ag \
+    tig \
     tmux \
     vim \
     virtualenvwrapper
