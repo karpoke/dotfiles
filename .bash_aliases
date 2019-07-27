@@ -57,7 +57,7 @@ __k_bak () { [ -r "$1" ] && mv "$1"{,.bak}; }
 __k_cmd2img () { convert -font courier -pointsize 12 -background black -fill white label:"$("$@")" -trim output.png; }
 __k_ipinfo () { curl -s "http://ipinfo.io/$1"; }
 __k_rip_audio () { output="${1%.*}-ripped.${1##*.}"; mplayer -ao pcm -vo null -vc dummy -dumpaudio -dumpfile "$output" "$1"; }
-__k_cat () { [ -d "$1" ] && ls "$1"; }
+__k_cat () { if [ -d "$1" ]; then  ls "$1"; else /bin/cat "$@"; fi }
 
 alias bak=__k_bak
 alias cat=__k_cat
