@@ -14,7 +14,8 @@ sudo apt install \
 
 pip install --upgrade pip
 pip install \
-    ipython
+    ipython \
+    pdbpp
 
 ipython profile create
 
