@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 sudo apt install \
     dsh \
@@ -13,6 +13,13 @@ sudo apt install \
     tmux \
     vim \
     virtualenvwrapper
+
+# customize by host
+HOSTNAMES=("rpi")
+if [[ "${HOSTNAMES[@]}" =~ $(hostname) ]]; then
+    sudo apt install \
+        ddclient
+fi
 
 pip install --upgrade pip
 pip install \
