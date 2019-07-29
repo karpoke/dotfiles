@@ -4,7 +4,7 @@ export DOTFILES_DIR="${BASH_SOURCE%/*}"
 export CDPATH=:..:~:~/projects:$CDPATH
 export EDITOR=/usr/bin/vim
 export HISTSIZE=20000000
-export HISTFILESIZE=20000000
+export HISTFILESIZE=$HISTSIZE
 export MANPAGER='less -s -M +Gg -X'
 
 # Autocorrect typos in path names when using `cd`
