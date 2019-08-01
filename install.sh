@@ -2,6 +2,7 @@
 
 sudo apt install \
     dsh \
+    fdupes \
     git \
     highlight \
     htop \
@@ -18,7 +19,8 @@ sudo apt install \
 HOSTNAMES=("rpi")
 if [[ "${HOSTNAMES[@]}" =~ $(hostname) ]]; then
     sudo apt install \
-        ddclient
+        ddclient \
+        jdupes
 fi
 
 pip install --upgrade pip
