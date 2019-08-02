@@ -56,6 +56,7 @@ alias upgrade_fzf='cd ~/.fzf && git pull && ./install'
 __k_bak () { [ -r "$1" ] && mv "$1"{,.bak}; }
 __k_cmd2img () { convert -font courier -pointsize 12 -background black -fill white label:"$("$@")" -trim output.png; }
 __k_ipinfo () { curl -s "http://ipinfo.io/$1"; }
+__k_http_status () { curl -s -o /dev/null -w "%{http_code}" "$1"; }
 __k_rip_audio () { output="${1%.*}-ripped.${1##*.}"; mplayer -ao pcm -vo null -vc dummy -dumpaudio -dumpfile "$output" "$1"; }
 __k_cat () { if [ -d "$1" ]; then  ls "$1"; else /bin/cat "$@"; fi }
 
@@ -66,6 +67,7 @@ alias cmd2img=__k_cmd2img
 alias dkelc='docker exec -it $(dklcid) bash --login'
 alias dklcip='docker inspect -f "{{.NetworkSettings.IPAddress}}" $(docker ps -l -q)'
 alias ipinfo=__k_ipinfo
+alias http_status=__k_http_status
 alias make1mb='truncate -s 1m ./1MB.dat'
 alias myip='curl -s ifconfig.me'
 alias http_server='python -m SimpleHTTPServer'
