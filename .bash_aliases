@@ -63,7 +63,13 @@ __k_ipinfo () { curl -s "http://ipinfo.io/$1"; }
 __k_http_status () { curl -s -o /dev/null -w "%{http_code}" "$1"; }
 __k_rip_audio () { output="${1%.*}-ripped.${1##*.}"; mplayer -ao pcm -vo null -vc dummy -dumpaudio -dumpfile "$output" "$1"; }
 __k_slugify () { echo "$*" | iconv -t ascii//TRANSLIT | sed -E 's/[^a-zA-Z0-9]+/-/g' | sed -E 's/^-+|-+$//g' | tr A-Z a-z; }
-__k_test_slugify () { test "$(__k_slugify 'àáèéíïòóúüÀÁÈÉÍÏÒÓÚÜ çÇñÑ')" == "aaeeiioouuaaeeiioouu-ccnn"; }
+
+__k_test_slugify () {
+    # some punctuation
+    test "$(__k_slugify ',.;:_-+─=ºª¡!"·$%&/()[]{}¿?|@#~½¬')" == "oa-1-2" &&
+    # some non-ascii charcters
+    test "$(__k_slugify 'áÁàÀăĂâÂåÅäÄąĄæÆćĆčČçÇđĐéÉèÈėĖęĘğíÍîÎïÏįĮıňŇñÑóÓòÒöÖőŐõÕøØšŠşŞţŢúÚüÜűŰųŲūŪýÝžŽ')" == "aaaaaaaaaaaaaaaeaeccccccddeeeeeeeegiiiiiiiiinnnnoooooooooooossssttuuuuuuuuuuyyzz";
+}
 
 alias bak=__k_bak
 alias cat=__k_cat
