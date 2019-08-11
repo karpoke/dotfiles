@@ -29,6 +29,6 @@ command -v direnv > /dev/null && eval "$(direnv hook bash)"
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 
 [ -f "$DOTFILES_DIR/.bash_aliases" ] && source "$DOTFILES_DIR/.bash_aliases"
-[ -f "$DOTFILES_DIR/.jump.sh" ] && source "$DOTFILES_DIR/.jump.sh"
+[ -f "$DOTFILES_DIR/jump.sh" ] && source "$DOTFILES_DIR/jump.sh"
 [ -f "$DOTFILES_DIR/git_custom_prompt" ] && source "$DOTFILES_DIR/git_custom_prompt"
 [ -f "$DOTFILES_DIR/.less_termcap" ] && source "$DOTFILES_DIR/.less_termcap"
