@@ -1,0 +1,27 @@
+##
+### OpenDNS.com account-configuration
+###
+protocol=dyndns2
+use=web, web=https://www.ignaciocano.com/ip.php, ssl=yes
+#use=cmd, cmd='curl -Afirefox https://www.ignaciocano.com/ip.php'
+server=updates.opendns.com
+login=OPENDNS_USERNAME
+password='OPENDNS_PASSWORD'
+# Network label as specified in https://dashboard.opendns.com/ substituing
+# blank spaces by underscores
+OPENDNS_NETWORK_LABEL
+
+# check status:
+# sudo /sbin/service ddclient status
+
+# start on boot:
+# set run_daemon="true" in /etc/default/ddclient
+
+# start client:
+# sudo /sbin/service ddclient start
+
+# debug mode:
+# sudo ddclient -debug -verbose -noquiet
+
+# force:
+# sudo ddclient -force
