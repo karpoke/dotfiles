@@ -20,7 +20,9 @@ HOSTNAMES=("rpi")
 if [[ "${HOSTNAMES[@]}" =~ $(hostname) ]]; then
     sudo apt install \
         ddclient \
-        jdupes
+        jdupes \
+        transmission-daemon \
+        transmission-cli
 fi
 
 pip install --upgrade pip
