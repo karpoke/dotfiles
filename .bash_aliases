@@ -47,6 +47,7 @@ alias perm='stat --printf "%a %n \n"'
 alias rm='rm -iv'
 alias rsync='rsync -vh'
 alias ssh='ssh -C'
+alias wget='wget -c'
 alias xargs='xargs -r'
 
 # https://cirw.in/blog/bracketed-paste
