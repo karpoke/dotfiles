@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 sudo apt install \
+    etckeeper \
     dsh \
     fdupes \
     git \
@@ -31,6 +32,11 @@ pip install \
     pdbpp
 
 ipython profile create
+
+sudo etckeeper init
+# http://etckeeper.branchable.com/
+# sudo etckeeper commit "Reason for configuration change"
+# sudo git -C /etc log
 
 # check before install this
 
