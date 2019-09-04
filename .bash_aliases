@@ -63,6 +63,7 @@ __k_cat () { if [ -d "$1" ]; then  ls "$1"; else /bin/cat "$@"; fi }
 __k_cmd2img () { convert -font courier -pointsize 12 -background black -fill white label:"$("$@")" -trim output.png; }
 __k_ipinfo () { curl -s "http://ipinfo.io/$1"; }
 __k_http_status () { curl -s -o /dev/null -w "%{http_code}" "$1"; }
+__k_random_uuid_to_dev () { dev="$1"; sudo umount /dev/"$dev" && tune2fs /dev/"$dev" -U random; }
 __k_rip_audio () { output="${1%.*}-ripped.${1##*.}"; mplayer -ao pcm -vo null -vc dummy -dumpaudio -dumpfile "$output" "$1"; }
 __k_slugify () { echo "$*" | iconv -t ascii//TRANSLIT | sed -E 's/[^a-zA-Z0-9]+/-/g' | sed -E 's/^-+|-+$//g' | tr A-Z a-z; }
 
@@ -86,6 +87,7 @@ alias myip='curl -s ifconfig.me'
 alias http_server='python -m SimpleHTTPServer'
 # shellcheck disable=SC2142
 alias remove_duplicated_lines='awk '\''!x[$0]++'\'''
+alias random_uuid_to_dev=__k_random_uuid_to_dev 
 alias rip_audio=__k_rip_audio
 alias slugify=__k_slugify
 alias smtp_debug_server='python -m smtpd -n -c DebuggingServer localhost:1025'
