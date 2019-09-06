@@ -39,6 +39,7 @@ alias cpv='rsync -ah --info=progress2'
 alias grep='grep --color -i'
 alias lt='ls --human-readable --size -1 -S --classify'
 alias mkdir='mkdir -pv'
+# shellcheck disable=SC2142
 alias mnt='mount | awk -F'\'' '\'' '\''{ printf "%s\t%s\n",$1,$3; }'\'' | column -t | egrep ^/dev/ | sort'
 alias mv='mv -iv'
 alias pbcopy='xclip -selection clipboard'
