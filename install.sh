@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
 sudo apt install \
-    etckeeper \
+    convmv \
     dsh \
+    etckeeper \
     fdupes \
     git \
     highlight \
