@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 sudo apt install \
+    bleachbit \
     convmv \
     dsh \
     etckeeper \
