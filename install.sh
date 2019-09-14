@@ -6,6 +6,7 @@ sudo apt install \
     dsh \
     etckeeper \
     fdupes \
+    getmail4 \
     git \
     gnupg2 \
     highlight \
