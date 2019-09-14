@@ -7,9 +7,11 @@ sudo apt install \
     etckeeper \
     fdupes \
     git \
+    gnupg2 \
     highlight \
     htop \
     ipcalc \
+    oathtool \
     python-pip \
     shellcheck \
     silversearcher-ag \
