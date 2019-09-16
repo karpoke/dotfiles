@@ -56,4 +56,7 @@ sudo etckeeper init
 # git clone git://github.com/kennethreitz/autoenv.git ~/.autoenv
 # echo 'source ~/.autoenv/activate.sh' >> ~/.bashrc
 
+# pivpn: http://www.pivpn.io/
+# curl -L https://install.pivpn.io | bash
+
 grep -q "source ${BASH_SOURCE%/*}/.bashrc" ~/.bashrc || echo "source ${BASH_SOURCE%/*}/.bashrc" >> ~/.bashrc
