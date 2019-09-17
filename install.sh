@@ -28,7 +28,7 @@ if [[ "${HOSTNAMES[@]}" =~ $(hostname) ]]; then
         ddclient \
         jdupes \
         transmission-daemon \
-        transmission-cli
+        transmission-remote-cli
 fi
 
 pip install --upgrade pip
@@ -58,5 +58,12 @@ sudo etckeeper init
 
 # pivpn: http://www.pivpn.io/
 # curl -L https://install.pivpn.io | bash
+# pivpn add
+# pivpn add nopass
+# pivpn list
+
+# transmission
+# webui enabled: sudo ufw allow from 192.168.1.0/24 to any port 9091 proto tcp
+# transmission-remote-cli --create-config
 
 grep -q "source ${BASH_SOURCE%/*}/.bashrc" ~/.bashrc || echo "source ${BASH_SOURCE%/*}/.bashrc" >> ~/.bashrc
