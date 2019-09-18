@@ -67,7 +67,8 @@ sudo etckeeper init
 # transmission-remote-cli --create-config
 
 
-# git config
-# ln -s "${BASH_SOURCE%/*}/.gitconfig"
+# config files
+test ! -e "${BASH_SOURCE%/*}/.gitconfig" && ln -s "${BASH_SOURCE%/*}/.gitconfig"
+test ! -e "${BASH_SOURCE%/*}/.tmux.conf" && ln -s "${BASH_SOURCE%/*}/.tmux.conf"
 
 grep -q "source ${BASH_SOURCE%/*}/.bashrc" ~/.bashrc || echo "source ${BASH_SOURCE%/*}/.bashrc" >> ~/.bashrc
