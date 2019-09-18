@@ -66,4 +66,8 @@ sudo etckeeper init
 # webui enabled: sudo ufw allow from 192.168.1.0/24 to any port 9091 proto tcp
 # transmission-remote-cli --create-config
 
+
+# git config
+# ln -s "${BASH_SOURCE%/*}/.gitconfig"
+
 grep -q "source ${BASH_SOURCE%/*}/.bashrc" ~/.bashrc || echo "source ${BASH_SOURCE%/*}/.bashrc" >> ~/.bashrc
