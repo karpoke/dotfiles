@@ -12,6 +12,7 @@ sudo apt install \
     highlight \
     htop \
     ipcalc \
+    ncftp \
     oathtool \
     python-pip \
     shellcheck \
