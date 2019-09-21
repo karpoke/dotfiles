@@ -15,7 +15,7 @@ shopt -s cdspell
 # https://github.com/junegunn/fzf/
 # https://www.mankier.com/1/fzf
 # https://github.com/junegunn/blsd
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --inline-info'
+export FZF_DEFAULT_OPTS='--height 40% --border --inline-info'
 command -v ag > /dev/null && export FZF_CTRL_T_COMMAND="ag --hidden --path-to-agignore '$DOTFILES_DIR/.agignore' -g ''"
 command -v highlight > /dev/null && export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 test -z "$FZF_CTRL_T_OPTS" && export FZF_CTRL_T_OPTS='--preview "head -200 {}"'
