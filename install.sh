@@ -12,6 +12,7 @@ sudo apt install \
     highlight \
     htop \
     ipcalc \
+    ncftp \
     oathtool \
     python-pip \
     shellcheck \
@@ -65,5 +66,15 @@ sudo etckeeper init
 # transmission
 # webui enabled: sudo ufw allow from 192.168.1.0/24 to any port 9091 proto tcp
 # transmission-remote-cli --create-config
+
+
+# config files
+test ! -e "${BASH_SOURCE%/*}/.agignore" && ln -s "${BASH_SOURCE%/*}/.agignore"
+test ! -e "${BASH_SOURCE%/*}/.editorconfig" && ln -s "${BASH_SOURCE%/*}/.editorconfig"
+test ! -e "${BASH_SOURCE%/*}/.i3" && ln -s "${BASH_SOURCE%/*}/.i3"
+test ! -e "${BASH_SOURCE%/*}/.inputrc" && ln -s "${BASH_SOURCE%/*}/.inputrc"
+test ! -e "${BASH_SOURCE%/*}/.gitconfig" && ln -s "${BASH_SOURCE%/*}/.gitconfig"
+test ! -e "${BASH_SOURCE%/*}/.tmux.conf" && ln -s "${BASH_SOURCE%/*}/.tmux.conf"
+# test ! -e "${BASH_SOURCE%/*}/.vimrc" && ln -s "${BASH_SOURCE%/*}/.vimrc"
 
 grep -q "source ${BASH_SOURCE%/*}/.bashrc" ~/.bashrc || echo "source ${BASH_SOURCE%/*}/.bashrc" >> ~/.bashrc
