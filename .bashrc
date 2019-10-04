@@ -7,7 +7,7 @@ export EDITOR=/usr/bin/vim
 export HISTSIZE=20000000
 export HISTFILESIZE=$HISTSIZE
 export MANPAGER='less -s -M +Gg -X'
-#export PATH=$DOCKERIZED_APPS_DIR:$PATH
+export PATH=$PATH:$DOCKERIZED_APPS_DIR
 
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell
