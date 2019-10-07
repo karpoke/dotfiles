@@ -18,6 +18,7 @@ sudo apt install \
     python-pip \
     shellcheck \
     silversearcher-ag \
+    sqlite3 \
     tig \
     tmux \
     vim \
