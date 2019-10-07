@@ -12,6 +12,7 @@ sudo apt install \
     highlight \
     htop \
     ipcalc \
+    keepassx \
     ncftp \
     oathtool \
     python-pip \
