@@ -52,6 +52,11 @@ sudo etckeeper init
 # git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 # ~/.fzf/install
 
+# navi: https://github.com/denisidoro/navi
+# requires fzf
+# git clone https://github.com/denisidoro/navi ~/navi
+# cd ~/navi/ && sudo make install
+
 # blsd: https://github.com/junegunn/blsd
 # bash <(curl -fL https://raw.githubusercontent.com/junegunn/blsd/master/install)
 
