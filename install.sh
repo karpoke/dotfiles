@@ -46,19 +46,23 @@ sudo etckeeper init
 # sudo etckeeper commit "Reason for configuration change"
 # sudo git -C /etc log
 
-# check before install this
+read -p "Install fzf? [y/N] " yn
+if [ "$yn" == "y" ]; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
 
-# fzf: https://github.com/junegunn/fzf#installation
-# git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-# ~/.fzf/install
+    read -p "Install navi (requires fzf)? [y/N] " yn
+    if [ "$yn" == "y" ]; then
+        git clone https://github.com/denisidoro/navi ~/.navi
+        cd ~/.navi
+        sudo make install
+    fi
+fi
 
-# navi: https://github.com/denisidoro/navi
-# requires fzf
-# git clone https://github.com/denisidoro/navi ~/navi
-# cd ~/navi/ && sudo make install
-
-# blsd: https://github.com/junegunn/blsd
-# bash <(curl -fL https://raw.githubusercontent.com/junegunn/blsd/master/install)
+read -p "Install blsd? [y/N] " yn
+if [ "$yn" == "y" ]; then
+    bash <(curl -fL https://raw.githubusercontent.com/junegunn/blsd/master/install)
+fi
 
 # autoenv
 # git clone git://github.com/kennethreitz/autoenv.git ~/.autoenv
