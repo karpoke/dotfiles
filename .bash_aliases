@@ -60,7 +60,6 @@ alias upgrade_fzf='cd ~/.fzf && git pull && ./install'
 
 # one-liner utilities
 __k_bak () { [ -r "$1" ] && mv "$1"{,.bak}; }
-__k_cat () { if [ -d "$1" ]; then  ls "$1"; else command -v bat && bat "$@" || /bin/cat "$@"; fi }
 __k_cmd2img () { convert -font courier -pointsize 12 -background black -fill white label:"$("$@")" -trim output.png; }
 __k_ipinfo () { curl -s "http://ipinfo.io/$1"; }
 __k_http_status () { curl -s -o /dev/null -w "%{http_code}" "$1"; }
@@ -179,6 +178,16 @@ __k_vim () {
             # edit last opened file on the last line
             env vim -c "normal '0"
         fi
+    fi
+}
+
+__k_cat () {
+    if [ "$#" -eq 1 -a -d "$1" ]; then
+        ls "$1"
+    elif [ "$#" -eq 0 ]; then
+        /bin/cat
+    else
+        command -v bat && bat "$@" || /bin/cat "$@"
     fi
 }
 
