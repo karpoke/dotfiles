@@ -1,5 +1,5 @@
 # http://mywiki.wooledge.org/BashFAQ/028
-export DOTFILES_DIR="${BASH_SOURCE%/*}"
+export DOTFILES_DIR="$(readlink -f ${BASH_SOURCE%/*})"
 export DOCKERIZED_APPS_DIR="$DOTFILES_DIR/../dockerize"
 
 export CDPATH=:..:~:~/projects:$CDPATH
