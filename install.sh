@@ -19,6 +19,7 @@ sudo apt install \
     shellcheck \
     silversearcher-ag \
     sqlite3 \
+    thefuck \
     tig \
     tmux \
     vim \
