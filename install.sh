@@ -22,6 +22,7 @@ sudo apt install \
     thefuck \
     tig \
     tmux \
+    tmuxinator \
     vim \
     virtualenvwrapper
 
