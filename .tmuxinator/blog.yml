@@ -31,10 +31,10 @@ root: <%= @settings["root"] %>
 # post: tmux -CC attach -t blog
 
 windows:
-  - editor:
+  - server:
       layout: main-vertical
       panes:
-        - vim
-        - guard
-  - server: bundle exec rails s
-  - logs: tail -f log/development.log
+        - pipenv run make devserver
+        - vim pelicanconf.py
+  - conf:
+      - git status
