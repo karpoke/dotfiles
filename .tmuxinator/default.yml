@@ -29,9 +29,7 @@ root: ~/
 
 windows:
   - editor:
-      layout: tiled
+      layout: even-horizontal
       panes:
-        - echo top left
-        - echo top right
-        - echo bottom left
-        - echo bottom right
+        -
+        -
