@@ -50,8 +50,11 @@
     # undo last commit (non pushed)
     undolast = "!f() { git reset HEAD~1 --soft && git reset HEAD .; }; f"
 
+    # show last active branches
+    lastbr = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))' 
+
     # clean all merged branches to master (except develop and master itself)
-    bclean = "!f() { bn=\"${1-master}\"; git branch --merged \"$bn\" | grep -Ev \" (master|develop)$\" | xargs -r git branch -d; }; f"
+    brclean = "!f() { bn=\"${1-master}\"; git branch --merged \"$bn\" | grep -Ev \" (master|develop)$\" | xargs -r git branch -d; }; f"
 
     # commits came since last command (git new HEAD)
     new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
