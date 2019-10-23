@@ -88,6 +88,12 @@ test ! -e "${BASH_SOURCE%/*}/.i3" && ln -s "${BASH_SOURCE%/*}/.i3"
 test ! -e "${BASH_SOURCE%/*}/.inputrc" && ln -s "${BASH_SOURCE%/*}/.inputrc"
 test ! -e "${BASH_SOURCE%/*}/.gitconfig" && ln -s "${BASH_SOURCE%/*}/.gitconfig"
 test ! -e "${BASH_SOURCE%/*}/.tmux.conf" && ln -s "${BASH_SOURCE%/*}/.tmux.conf"
-# test ! -e "${BASH_SOURCE%/*}/.vimrc" && ln -s "${BASH_SOURCE%/*}/.vimrc"
+test ! -e "${BASH_SOURCE%/*}/.vimrc" && ln -s "${BASH_SOURCE%/*}/.vimrc"
+
+# vim plugins
+# Install Vudle:  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# Reload source:  :so %
+# Install them:   :PluginInstall
+# Install YCM:    cd ~/.vim/bundle/YouCompleteme && python3 install.py
 
 grep -q "source ${BASH_SOURCE%/*}/.bashrc" ~/.bashrc || echo "source ${BASH_SOURCE%/*}/.bashrc" >> ~/.bashrc
