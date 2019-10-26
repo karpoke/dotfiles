@@ -84,13 +84,14 @@ fi
 
 
 # config files
-test ! -e "${BASH_SOURCE%/*}/.agignore" && ln -s "${BASH_SOURCE%/*}/.agignore"
-test ! -e "${BASH_SOURCE%/*}/.editorconfig" && ln -s "${BASH_SOURCE%/*}/.editorconfig"
-test ! -e "${BASH_SOURCE%/*}/.i3" && ln -s "${BASH_SOURCE%/*}/.i3"
-test ! -e "${BASH_SOURCE%/*}/.inputrc" && ln -s "${BASH_SOURCE%/*}/.inputrc"
-test ! -e "${BASH_SOURCE%/*}/.gitconfig" && ln -s "${BASH_SOURCE%/*}/.gitconfig"
-test ! -e "${BASH_SOURCE%/*}/.tmux.conf" && ln -s "${BASH_SOURCE%/*}/.tmux.conf"
-test ! -e "${BASH_SOURCE%/*}/.vimrc" && ln -s "${BASH_SOURCE%/*}/.vimrc"
+DOTFILES_DIR="$(readlink -f "${BASH_SOURCE}")"
+test ! -e "${DOTFILES_DIR}/.agignore" && ln -s "${DOTFILES_DIR}/.agignore ~/.agignore"
+test ! -e "${DOTFILES_DIR}/.editorconfig" && ln -s "${DOTFILES_DIR}/.editorconfig ~/.editorconfig"
+test ! -e "${DOTFILES_DIR}/.i3" && ln -s "${DOTFILES_DIR}/.i3 ~/.i3"
+test ! -e "${DOTFILES_DIR}/.inputrc" && ln -s "${DOTFILES_DIR}/.inputrc ~/.inputrc"
+test ! -e "${DOTFILES_DIR}/.gitconfig" && ln -s "${DOTFILES_DIR}/.gitconfig ~/.gitconfig"
+test ! -e "${DOTFILES_DIR}/.tmux.conf" && ln -s "${DOTFILES_DIR}/.tmux.conf ~/.conf"
+test ! -e "${DOTFILES_DIR}/.vimrc" && ln -s "${DOTFILES_DIR}/.vimrc ~/.vimrc"
 
 # vim plugins
 # Install Vudle:  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -98,4 +99,4 @@ test ! -e "${BASH_SOURCE%/*}/.vimrc" && ln -s "${BASH_SOURCE%/*}/.vimrc"
 # Install them:   :PluginInstall
 # Install YCM:    cd ~/.vim/bundle/YouCompleteme && python3 install.py
 
-grep -q "source ${BASH_SOURCE%/*}/.bashrc" ~/.bashrc || echo "source ${BASH_SOURCE%/*}/.bashrc" >> ~/.bashrc
+grep -q "source ${DOTFILES_DIR}/.bashrc" ~/.bashrc || echo "source ${DOTFILES_DIR}/.bashrc" >> ~/.bashrc
