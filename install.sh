@@ -66,9 +66,11 @@ if [ "$yn" == "y" ]; then
     bash <(curl -fL https://raw.githubusercontent.com/junegunn/blsd/master/install)
 fi
 
-# autoenv
-# git clone git://github.com/kennethreitz/autoenv.git ~/.autoenv
-# echo 'source ~/.autoenv/activate.sh' >> ~/.bashrc
+read -p "Install autoenv? [y/N] " yn
+if [ "$yn" == "y" ]; then
+    git clone git://github.com/kennethreitz/autoenv.git ~/.autoenv
+    echo 'source ~/.autoenv/activate.sh' >> ~/.bashrc
+fi
 
 # pivpn: http://www.pivpn.io/
 # curl -L https://install.pivpn.io | bash
