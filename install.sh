@@ -49,25 +49,25 @@ sudo etckeeper init
 # sudo etckeeper commit "Reason for configuration change"
 # sudo git -C /etc log
 
-read -p "Install fzf? [y/N] " yn
+read -rp "Install fzf? [y/N] " yn
 if [ "$yn" == "y" ]; then
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
 
-    read -p "Install navi (requires fzf)? [y/N] " yn
+    read -rp "Install navi (requires fzf)? [y/N] " yn
     if [ "$yn" == "y" ]; then
         git clone https://github.com/denisidoro/navi ~/.navi
-        cd ~/.navi
+        cd ~/.navi || exit
         sudo make install
     fi
 fi
 
-read -p "Install blsd? [y/N] " yn
+read -rp "Install blsd? [y/N] " yn
 if [ "$yn" == "y" ]; then
     bash <(curl -fL https://raw.githubusercontent.com/junegunn/blsd/master/install)
 fi
 
-read -p "Install autoenv? [y/N] " yn
+read -rp "Install autoenv? [y/N] " yn
 if [ "$yn" == "y" ]; then
     git clone git://github.com/kennethreitz/autoenv.git ~/.autoenv
     echo 'source ~/.autoenv/activate.sh' >> ~/.bashrc
@@ -85,7 +85,7 @@ fi
 
 
 # config files
-DOTFILES_DIR="$(readlink -f "${BASH_SOURCE}")"
+DOTFILES_DIR="$(readlink -f "$BASH_SOURCE")"
 test ! -e "${DOTFILES_DIR}/.agignore" && ln -s "${DOTFILES_DIR}/.agignore ~/.agignore"
 test ! -e "${DOTFILES_DIR}/.editorconfig" && ln -s "${DOTFILES_DIR}/.editorconfig ~/.editorconfig"
 test ! -e "${DOTFILES_DIR}/.i3" && ln -s "${DOTFILES_DIR}/.i3 ~/.i3"
