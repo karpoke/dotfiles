@@ -16,6 +16,7 @@ sudo apt install \
     ncftp \
     oathtool \
     python-pip \
+    rdfind \
     shellcheck \
     silversearcher-ag \
     sqlite3 \
