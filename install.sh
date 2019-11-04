@@ -3,9 +3,11 @@
 sudo apt install \
     bleachbit \
     convmv \
+    ddrescue \
     dsh \
     etckeeper \
     fdupes \
+    foremost \
     getmail4 \
     git \
     gnupg2 \
@@ -17,9 +19,11 @@ sudo apt install \
     oathtool \
     python-pip \
     rdfind \
+    scalpel \
     shellcheck \
     silversearcher-ag \
     sqlite3 \
+    testdisk \
     thefuck \
     tig \
     tmux \
