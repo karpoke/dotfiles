@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# admin
 sudo apt install \
     bleachbit \
     convmv \
@@ -15,6 +16,7 @@ sudo apt install \
     htop \
     ipcalc \
     keepassx \
+    locate \
     ncftp \
     oathtool \
     python-pip \
@@ -30,6 +32,14 @@ sudo apt install \
     tmuxinator \
     vim \
     virtualenvwrapper
+
+# hpvc
+sudo apt install \
+    hydra \
+    medusa \
+    ncrack \
+    nmap \
+    patator
 
 # customize by host
 HOSTNAMES=("rpi")
