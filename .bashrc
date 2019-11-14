@@ -39,7 +39,11 @@ command -v direnv > /dev/null && eval "$(direnv hook bash)"
 # export VIRTUALENVWRAPPER_SCRIPT=/usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 
+# shellcheck disable=SC1090
 [ -f "$DOTFILES_DIR/.bash_aliases" ] && source "$DOTFILES_DIR/.bash_aliases"
+# shellcheck disable=SC1090
 [ -f "$DOTFILES_DIR/jump.sh" ] && source "$DOTFILES_DIR/jump.sh"
+# shellcheck disable=SC1090
 [ -f "$DOTFILES_DIR/git_custom_prompt" ] && source "$DOTFILES_DIR/git_custom_prompt"
+# shellcheck disable=SC1090
 [ -f "$DOTFILES_DIR/.less_termcap" ] && source "$DOTFILES_DIR/.less_termcap"
