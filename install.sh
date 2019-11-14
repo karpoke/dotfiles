@@ -17,6 +17,7 @@ sudo apt install \
     ipcalc \
     keepassx \
     locate \
+    mailutils \
     ncftp \
     oathtool \
     python-pip \
