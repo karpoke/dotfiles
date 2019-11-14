@@ -1,6 +1,8 @@
 # http://mywiki.wooledge.org/BashFAQ/028
-export DOTFILES_DIR="$(readlink -f "${BASH_SOURCE%/*}")"
-export DOCKERIZED_APPS_DIR="$(readlink -f "$DOTFILES_DIR/../dockerize")"
+DOTFILES_DIR="$(readlink -f "${BASH_SOURCE%/*}")"
+export DOTFILES_DIR
+DOCKERIZED_APPS_DIR="$(readlink -f "$DOTFILES_DIR/../dockerize")"
+export DOCKERIZED_APPS_DIR
 
 export CDPATH=:..:~:~/projects:$CDPATH
 export EDITOR=/usr/bin/vim
