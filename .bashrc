@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # http://mywiki.wooledge.org/BashFAQ/028
 DOTFILES_DIR="$(readlink -f "${BASH_SOURCE%/*}")"
 export DOTFILES_DIR
