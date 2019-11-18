@@ -14,6 +14,7 @@ sudo apt install \
     gnupg2 \
     highlight \
     htop \
+    iftop \
     ipcalc \
     keepassx \
     locate \
