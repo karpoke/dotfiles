@@ -173,7 +173,7 @@ __k_vim () {
         re='^[0-9]+$'
         if [[ -r "$(readlink -f "$fn")" && "$ln" =~ $re ]]; then
             env vim "$fn" +"$ln"
-        elif [[ -n "$@" ]]; then
+        elif [[ -n "$*" ]]; then
             env vim "$@"
         else
             # edit last opened file on the last line
