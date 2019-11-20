@@ -187,8 +187,10 @@ __k_cat () {
         ls "$1"
     elif [ "$#" -eq 0 ]; then
         /bin/cat
+    elif command -v bat > /dev/null; then
+        bat "$@"
     else
-        command -v bat && bat "$@" || /bin/cat "$@"
+        /bin/cat "$@"
     fi
 }
 
