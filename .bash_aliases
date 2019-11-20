@@ -124,7 +124,7 @@ __k_.. () {
     if [[ -z "$1" ]] || [[ "$1" =~ ^[0-9]+$ ]]; then
         let n="${1:-1}"
         path="."
-        while [ $n -gt 0 -a "$PWD" != "/" ]; do
+        while [ $n -gt 0 ] && [ "$PWD" != "/" ]; do
             path="$path/.."
             ((n--))
         done
@@ -183,7 +183,7 @@ __k_vim () {
 }
 
 __k_cat () {
-    if [ "$#" -eq 1 -a -d "$1" ]; then
+    if [ "$#" -eq 1 ] && [  -d "$1" ]; then
         ls "$1"
     elif [ "$#" -eq 0 ]; then
         /bin/cat
