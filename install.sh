@@ -45,7 +45,7 @@ sudo apt install \
 
 # customize by host
 HOSTNAMES=("rpi")
-if [[ "${HOSTNAMES[@]}" =~ $(hostname) ]]; then
+if [[ "${HOSTNAMES[*]}" =~ $(hostname) ]]; then
     sudo apt install \
         ddclient \
         jdupes \
