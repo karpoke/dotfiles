@@ -101,7 +101,7 @@ fi
 
 
 # config files
-DOTFILES_DIR="$(readlink -f "$BASH_SOURCE")"
+DOTFILES_DIR="$(readlink -f "${BASH_SOURCE%/*}")"
 test ! -e "${DOTFILES_DIR}/.agignore" && ln -s "${DOTFILES_DIR}/.agignore ~/.agignore"
 test ! -e "${DOTFILES_DIR}/.editorconfig" && ln -s "${DOTFILES_DIR}/.editorconfig ~/.editorconfig"
 test ! -e "${DOTFILES_DIR}/.i3" && ln -s "${DOTFILES_DIR}/.i3 ~/.i3"
