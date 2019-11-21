@@ -87,6 +87,7 @@ alias remove_duplicated_lines='awk '\''!x[$0]++'\'''
 alias smtp_debug_server='python -m smtpd -n -c DebuggingServer localhost:1025'
 alias timewatch='(trap '\''kill -sSIGHUP $PPID'\'' SIGINT && echo "Stop it with ^D" && time read)'
 alias upgrade_fzf='cd ~/.fzf && git pull && ./install'
+alias what_the_commit="curl -s whatthecommit.com | grep '<p>' | sed 's/<p>//g'"
 
 # https://cirw.in/blog/bracketed-paste
 # http://thejh.net/misc/website-terminal-copy-paste
