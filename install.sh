@@ -8,6 +8,7 @@ sudo apt install \
     dsh \
     etckeeper \
     fdupes \
+    filezilla \
     foremost \
     getmail4 \
     git \
