@@ -57,7 +57,8 @@ alias perm='stat --printf "%a %n \n"'
 # one-liner utilities
 function bak () { [ -r "$1" ] && mv "$1"{,.bak}; }
 function cmd2img () { convert -font courier -pointsize 12 -background black -fill white label:"$("$@")" -trim output.png; }
-function http_status () { curl -s -o /dev/null -w "%{http_code}" "$1"; }
+function http_compression { curl -s -I -H "Accept-Encoding: br,gzip,deflate" -A "firefox" "$1" | grep -i "Content-Encoding"; }
+function http_status () { curl -s -o /dev/null -w "%{http_code}" -A "firefox" "$1"; }
 function ipinfo () { curl -s "http://ipinfo.io/$1"; }
 function pyimport () { python -c "import $1"; }
 function pypath () { python -c "import os, $1; print(os.path.dirname($1.__file__))"; }
@@ -79,7 +80,7 @@ alias dkelc='docker exec -it $(dklcid) bash --login'
 alias dklcip='docker inspect -f "{{.NetworkSettings.IPAddress}}" $(docker ps -l -q)'
 alias get_developer_excuses='curl -s  http://developerexcuses.com/ | grep nofollow | grep -Eo ">[^<]+" | cut -b 2-'
 alias make1mb='truncate -s 1m ./1MB.dat'
-alias myip='curl -A firefox -s https://www.ignaciocano.com/ip'
+alias myip='curl -A "firefox" -s https://www.ignaciocano.com/ip'
 alias http_server='python -m SimpleHTTPServer'
 # shellcheck disable=SC2142
 alias remove_duplicated_lines='awk '\''!x[$0]++'\'''
