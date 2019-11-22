@@ -186,6 +186,14 @@ function cat () {
     fi
 }
 
+function df () {
+    if command -v pydf; then
+        pydf "$@"
+    else
+        /bin/df "$@"
+    fi
+}
+
 # to avoid `..` to be aliased by other scripts. this must be at the end of the
 # file
 function alias () {
