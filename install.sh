@@ -22,6 +22,7 @@ sudo apt install \
     mailutils \
     ncftp \
     oathtool \
+    pydf \
     python-pip \
     rdfind \
     scalpel \
