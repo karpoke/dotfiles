@@ -45,6 +45,8 @@ alias ssh='ssh -C'
 alias wget='wget -c'
 alias xargs='xargs -r'
 
+alias ch644='find . -type f -exec chmod -R 644 {} \;'
+alias ch755='find . -type d -exec chmod -R 755 {} \;'
 alias cls='clear'
 alias cpv='rsync -ah --info=progress2'
 alias lt='ls --human-readable --size -1 -S --classify'
