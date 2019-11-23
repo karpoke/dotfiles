@@ -201,6 +201,24 @@ function _df () {
     fi
 }
 
+function reattach () {
+    if [ "$(env cat /proc/sys/kernel/yama/ptrace_scope)" == "1" ]; then
+        echo "ERROR: to allow non-root users to reattach a process in Ubuntu:"
+        echo "  $ echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope"
+    else
+        if [ "$(jobs -p | wc -l)" -gt 1 ]; then
+            echo "ERROR: more than one process in background"
+        else
+            PPIDBG="$(jobs -p)"
+            CMD="$(jobs -l | awk '{ print substr($0, index($0, $4)) }')"
+            disown
+            tmux new -d -s "r_$PPIDBG" -n "$CMD"
+            tmux send-keys -t "r_$PPIDBG" "reptyr $PPIDBG" ENTER
+            tmux attach -t "r_$PPIDBG"
+        fi
+    fi
+}
+
 # to avoid `..` to be aliased by other scripts. this must be at the end of the
 # file
 function alias () {

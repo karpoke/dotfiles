@@ -25,6 +25,7 @@ sudo apt install \
     pydf \
     python-pip \
     rdfind \
+    reptyr \
     scalpel \
     shellcheck \
     silversearcher-ag \
