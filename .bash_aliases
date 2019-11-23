@@ -56,10 +56,10 @@ alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias perm='stat --printf "%a %n \n"'
 
-alias cat=_cat
-alias cd=_cd
-alias df=_df
-alias vim=_vim
+alias cat=__cat
+alias cd=__cd
+alias df=__df
+alias vim=__vim
 
 # one-liner utilities
 function bak () { [ -r "$1" ] && mv "$1"{,.bak}; }
@@ -135,7 +135,7 @@ function .. () {
 }
 
 # go to directory even if a file is passed as param
-function _cd () {
+function __cd () {
     local path
     if [ -f "$1" ]; then
         path="$(dirname "$1")"
@@ -150,7 +150,7 @@ function _cd () {
 # to make sure special and critical system files are opened with the
 # addecuated commands. also make it easier open files into the
 # desired line or the most recent opened file
-function _vim () {
+function __vim () {
     local fn
     local ln
     local re
@@ -181,7 +181,7 @@ function _vim () {
     fi
 }
 
-function _cat () {
+function __cat () {
     if [ "$#" -eq 1 ] && [  -d "$1" ]; then
         ls "$1"
     elif [ "$#" -eq 0 ]; then
@@ -193,7 +193,7 @@ function _cat () {
     fi
 }
 
-function _df () {
+function __df () {
     if command -v pydf; then
         pydf "$@"
     else
