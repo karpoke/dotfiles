@@ -18,6 +18,7 @@ sudo apt install \
     iftop \
     ipcalc \
     keepassx \
+    lnav \
     locate \
     mailutils \
     ncftp \
