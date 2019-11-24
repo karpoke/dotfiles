@@ -33,6 +33,7 @@ alias api='sudo apt install'
 alias app='sudo apt autoremove && sudo apt clean && sudo apt autoclean'
 alias aps='apt search'
 alias apu='sudo apt update'
+alias apr='sudo apt purge'
 
 alias cp='cp -i'
 alias grep='grep --color -i --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
