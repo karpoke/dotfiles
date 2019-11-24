@@ -10,6 +10,7 @@ sudo apt install \
     fdupes \
     filezilla \
     foremost \
+    fswebcam \
     getmail4 \
     git \
     gnupg2 \
