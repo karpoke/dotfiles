@@ -70,6 +70,7 @@ function http_status () { curl -s -o /dev/null -w "%{http_code}" -A "firefox" "$
 function ipinfo () { curl -s "http://ipinfo.io/$1"; }
 function pyimport () { python -c "import $1"; }
 function pypath () { python -c "import os, $1; print(os.path.dirname($1.__file__))"; }
+function pysslcertspath () { python -c "import ssl; print(ssl.get_default_verify_paths())"; }
 function random_uuid_to_dev () { dev="$1"; sudo umount /dev/"$dev" && tune2fs /dev/"$dev" -U random; }
 function rip_audio () { output="${1%.*}-ripped.${1##*.}"; mplayer -ao pcm -vo null -vc dummy -dumpaudio -dumpfile "$output" "$1"; }
 function slugify () { echo "$*" | iconv -t ascii//TRANSLIT | sed -E 's/[^a-zA-Z0-9]+/-/g' | sed -E 's/^-+|-+$//g' | tr '[:upper:]' '[:lower:]'; }
