@@ -36,6 +36,7 @@ alias apu='sudo apt update'
 alias apr='sudo apt purge'
 
 alias cp='cp -i'
+alias dmesg='dmesg -wH'
 alias grep='grep --color -i --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias ls='ls --color=tty'
 alias mkdir='mkdir -pv'
