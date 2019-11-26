@@ -5,6 +5,7 @@ sudo apt install \
     bleachbit \
     convmv \
     ddrescue \
+    deborphan \
     dsh \
     etckeeper \
     fdupes \
