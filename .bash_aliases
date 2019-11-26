@@ -34,6 +34,8 @@ alias app='sudo apt autoremove && sudo apt clean && sudo apt autoclean'
 alias aps='apt search'
 alias apu='sudo apt update'
 alias apr='sudo apt purge'
+# add autocompletion for aliases
+complete -c apd apg aph api app aps apu apr
 
 alias cp='cp -i'
 alias dmesg='dmesg -wH'
