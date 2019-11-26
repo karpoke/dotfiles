@@ -9,6 +9,7 @@ sudo apt install \
     etckeeper \
     fdupes \
     filezilla \
+    fonts-powerline \
     foremost \
     fswebcam \
     getmail4 \
