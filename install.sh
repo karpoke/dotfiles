@@ -6,6 +6,7 @@ sudo apt install \
     convmv \
     ddrescue \
     deborphan \
+    dnsutils \
     dsh \
     etckeeper \
     fdupes \
