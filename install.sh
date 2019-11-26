@@ -33,6 +33,7 @@ sudo apt install \
     shellcheck \
     silversearcher-ag \
     sqlite3 \
+    sqlitebrowser \
     testdisk \
     thefuck \
     tig \
