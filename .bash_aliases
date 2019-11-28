@@ -187,12 +187,10 @@ function __vim () {
 }
 
 function __cat () {
-    if [ "$#" -eq 1 ] && [  -d "$1" ]; then
+    if [ "$#" -eq 1 ] && [ -d "$1" ]; then
         ls "$1"
     elif [ "$#" -eq 0 ]; then
         /bin/cat
-    elif command -v bat > /dev/null; then
-        bat "$@"
     else
         /bin/cat "$@"
     fi
