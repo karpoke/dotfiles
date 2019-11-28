@@ -6,6 +6,7 @@ sudo apt install \
     convmv \
     ddrescue \
     deborphan \
+    docker-ce \
     dnsutils \
     dsh \
     etckeeper \
