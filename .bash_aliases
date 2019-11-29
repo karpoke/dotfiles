@@ -26,7 +26,7 @@
 
 
 # shortcuts
-alias apd='sudo apt list --upgradable'
+alias apd='apt list --upgradable'
 alias apg='sudo apt upgrade'
 alias aph='apt show'
 alias api='sudo apt install'
@@ -35,7 +35,7 @@ alias aps='apt search'
 alias apu='sudo apt update'
 alias apr='sudo apt purge'
 # add autocompletion for aliases
-complete -c apd apg aph api app aps apu apr
+complete -c apd apg aph api apr
 
 alias cp='cp -i'
 alias dmesg='dmesg -wH'
