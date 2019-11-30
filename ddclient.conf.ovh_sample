@@ -1,13 +1,18 @@
-##
-### OpenDNS.com account-configuration
+###
+### OVH account-configuration
 ###
 protocol=dyndns2
 use=web, web=https://www.ignaciocano.com/ip.php, ssl=yes
 #use=cmd, cmd='curl -Afirefox https://www.ignaciocano.com/ip.php'
+cache=/tmp/DYNHOST_DOMAIN.ddclient.cache
+# pid=/var/run/ddclient.pid
 server=www.ovh.com
 login=DYNHOST_LOGIN
 password='DYNHOST_PASSWORD'
 DYNHOST_DOMAIN
+
+# change interval:
+# set daemon_interval="300" in /etc/default/ddclient
 
 # check status:
 # sudo /sbin/service ddclient status
