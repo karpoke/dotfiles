@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # some useful sources
 # https://github.com/Bash-it/bash-it/tree/master/aliases/available
@@ -176,12 +176,12 @@ function __vim () {
         ln=${1#*:}
         re='^[0-9]+$'
         if [[ -r "$(readlink -f "$fn")" && "$ln" =~ $re ]]; then
-            env vim "$fn" +"$ln"
+            /usr/bin/vim "$fn" +"$ln"
         elif [[ -n "$*" ]]; then
-            env vim "$@"
+            /usr/bin/vim "$@"
         else
             # edit last opened file on the last line
-            env vim -c "normal '0"
+            /usr/bin/vim -c "normal '0"
         fi
     fi
 }
@@ -205,7 +205,7 @@ function __df () {
 }
 
 function reattach () {
-    if [ "$(env cat /proc/sys/kernel/yama/ptrace_scope)" == "1" ]; then
+    if [ "$(/bin/cat /proc/sys/kernel/yama/ptrace_scope)" == "1" ]; then
         echo "ERROR: to allow non-root users to reattach a process in Ubuntu:"
         echo "  $ echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope"
     else
