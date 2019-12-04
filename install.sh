@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # admin
 sudo apt install \
@@ -44,6 +44,15 @@ sudo apt install \
     tmuxinator \
     vim \
     virtualenvwrapper
+
+# gnome
+sudo apt install \
+    chrome-gnome-shell \
+    gnome-shell-extension-suspend-button \
+    gnome-tweak-tool
+
+# suspend button extension allows to modify the suspend/shutdown button in the
+# status menu using Alt. must be manually enabled with gnome tweak tool
 
 # hpvc
 sudo apt install \
