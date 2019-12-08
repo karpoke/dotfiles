@@ -43,7 +43,8 @@ sudo apt install \
     tmux \
     tmuxinator \
     vim \
-    virtualenvwrapper
+    virtualenvwrapper \
+    xclip
 
 # gnome
 sudo apt install \
