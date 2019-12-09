@@ -2,6 +2,7 @@
 
 # admin
 sudo apt install \
+    atop \
     bleachbit \
     convmv \
     ddrescue \
@@ -22,12 +23,14 @@ sudo apt install \
     highlight \
     htop \
     iftop \
+    iotop \
     ipcalc \
     keepassx \
     lnav \
     locate \
     mailutils \
     ncftp \
+    ngrep \
     oathtool \
     pydf \
     python-pip \
