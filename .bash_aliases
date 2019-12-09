@@ -40,6 +40,7 @@ complete -c apd apg aph api apr
 alias cp='cp -i'
 alias dmesg='dmesg -wH'
 alias grep='grep --color -i --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
+alias ln='ln -v'
 alias ls='ls --color=tty'
 alias mkdir='mkdir -pv'
 alias mv='mv -iv'
