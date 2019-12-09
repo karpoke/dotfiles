@@ -18,6 +18,7 @@ sudo apt install \
     getmail4 \
     git \
     gnupg2 \
+    hdparm \
     highlight \
     htop \
     iftop \
