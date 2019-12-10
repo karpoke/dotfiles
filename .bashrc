@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # http://mywiki.wooledge.org/BashFAQ/028
 DOTFILES_DIR="$(readlink -f "${BASH_SOURCE%/*}")"
 DOCKERIZED_APPS_DIR="$(readlink -f "$DOTFILES_DIR/../dockerize")"
