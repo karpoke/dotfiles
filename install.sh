@@ -26,6 +26,8 @@ sudo apt install \
     iotop \
     ipcalc \
     keepassx \
+    libpam-dev \
+    libssl-dev \
     lnav \
     locate \
     mailutils \
