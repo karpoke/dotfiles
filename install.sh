@@ -119,6 +119,17 @@ if [ "$yn" == "y" ]; then
     echo 'source ~/.autoenv/activate.sh' >> ~/.bashrc
 fi
 
+read -rp "Install latch plugin? [y/N] " yn
+if [ "$yn" == "y" ]; then
+    git clone https://github.com/ElevenPaths/latch-plugin-unix.git
+    cd latch-plugin-unix || exit
+    ./configure prefix=/usr sysconfdir=/etc && make && sudo make install
+    sudo mv /usr/lib/pam_latch.so /lib*/*/security/
+    echo "Follow https://github.com/ElevenPaths/latch-plugin-unix"
+    # pairing: latch -p <token>
+    # unpairing: latch -u
+fi
+
 # pivpn: http://www.pivpn.io/
 # curl -L https://install.pivpn.io | bash
 # pivpn add
