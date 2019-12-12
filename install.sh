@@ -29,6 +29,7 @@ sudo apt install \
     lnav \
     locate \
     mailutils \
+    multitail \
     ncftp \
     ngrep \
     oathtool \
@@ -44,6 +45,7 @@ sudo apt install \
     testdisk \
     thefuck \
     tig \
+    tldr \
     tmux \
     tmuxinator \
     vim \
