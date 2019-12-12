@@ -31,9 +31,11 @@ sudo apt install \
     lnav \
     locate \
     mailutils \
+    mlocate \
     multitail \
     ncftp \
     ngrep \
+    nocache \
     oathtool \
     pydf \
     python-pip \
