@@ -55,6 +55,7 @@ alias ch755='find . -type d -exec chmod -R 755 {} \;'
 alias cls='clear'
 alias cpv='rsync -ah --info=progress2'
 alias lt='ls --human-readable --size -1 -S --classify'
+alias hidelast='history -d $((HISTCMD-2)) && history -d $((HISTCMD-1))'
 # shellcheck disable=SC2142
 alias mnt='mount | awk -F'\'' '\'' '\''{ printf "%s\t%s\n",$1,$3; }'\'' | column -t | egrep ^/dev/ | sort'
 alias pbcopy='xclip -selection clipboard'
