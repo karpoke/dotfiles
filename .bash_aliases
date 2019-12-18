@@ -50,17 +50,38 @@ alias ssh='ssh -C'
 alias wget='wget -c'
 alias xargs='xargs -r'
 
+# shellcheck disable=SC2139 disable=SC1083
+alias best_ubuntu_server="curl -s http://mirrors.ubuntu.com/mirrors.txt | xargs -n1 -I {} sh -c 'echo $(curl -r 0-102400 -s -w %{speed_download} -o /dev/null {}/ls-lR.gz) {}' | sort -gr | head -3 | awk '{ print $2 }'"
 alias ch644='find . -type f -exec chmod -R 644 {} \;'
 alias ch755='find . -type d -exec chmod -R 755 {} \;'
+alias clock='while sleep 1;do tput sc;tput cup 0 $(($(tput cols)-29));date;tput rc;done &'
 alias cls='clear'
 alias cpv='rsync -ah --info=progress2'
-alias lt='ls --human-readable --size -1 -S --classify'
-alias hidelast='history -d $((HISTCMD-2)) && history -d $((HISTCMD-1))'
+alias dkelc='docker exec -it $(dklcid) bash --login'
+alias dklcip='docker inspect -f "{{.NetworkSettings.IPAddress}}" $(docker ps -l -q)'
+alias get_developer_excuses='curl -s  http://developerexcuses.com/ | grep nofollow | grep -Eo ">[^<]+" | cut -b 2-'
+alias hide_last='history -d $((HISTCMD-2)) && history -d $((HISTCMD-1))'
+alias http_server='python -m SimpleHTTPServer'
+alias last_update='stat -c %y /var/cache/apt/pkgcache.bin'
+alias lt='ls --human-readable --size -1 -S --classify -r'
+alias make1mb='truncate -s 1m ./1MB.dat'
 # shellcheck disable=SC2142
 alias mnt='mount | awk -F'\'' '\'' '\''{ printf "%s\t%s\n",$1,$3; }'\'' | column -t | egrep ^/dev/ | sort'
+alias myip='curl -A firefox -s https://www.ignaciocano.com/ip'
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 alias perm='stat --printf "%a %n \n"'
+# shellcheck disable=SC2142
+alias remove_duplicated_lines='awk '\''!x[$0]++'\'''
+alias smtp_debug_server='python -m smtpd -n -c DebuggingServer localhost:1025'
+alias timewatch='(trap '\''kill -sSIGHUP $PPID'\'' SIGINT && echo "Stop it with ^D" && time read)'
+alias upgrade_fzf='cd ~/.fzf && git pull && ./install'
+alias what_the_commit="curl -s whatthecommit.com | grep '<p>' | sed 's/<p>//g'"
+
+# https://cirw.in/blog/bracketed-paste
+# http://thejh.net/misc/website-terminal-copy-paste
+alias enable_bracketed_paste_mode='printf "\e[?2004h"'
+alias disable_bracketed_paste_mode='printf "\e[?2004l"'
 
 alias cat=__cat
 alias cd=__cd
@@ -79,7 +100,7 @@ function pysslcertspath () { python -c "import ssl; print(ssl.get_default_verify
 function random_uuid_to_dev () { dev="$1"; sudo umount /dev/"$dev" && tune2fs /dev/"$dev" -U random; }
 function rip_audio () { output="${1%.*}-ripped.${1##*.}"; mplayer -ao pcm -vo null -vc dummy -dumpaudio -dumpfile "$output" "$1"; }
 function slugify () { echo "$*" | iconv -t ascii//TRANSLIT | sed -E 's/[^a-zA-Z0-9]+/-/g' | sed -E 's/^-+|-+$//g' | tr '[:upper:]' '[:lower:]'; }
-function vimencodingsample () { vim 'https://www.cl.cam.ac.uk/~mgk25/ucs/examples/UTF-8-demo.txt'; }
+function vim_encoding_sample () { vim 'https://www.cl.cam.ac.uk/~mgk25/ucs/examples/UTF-8-demo.txt'; }
 
 function test_slugify () {
     # some punctuation
@@ -87,27 +108,6 @@ function test_slugify () {
     # some non-ascii charcters
     test "$(slugify 'áÁàÀăĂâÂåÅäÄąĄæÆćĆčČçÇđĐéÉèÈėĖęĘğíÍîÎïÏįĮıňŇñÑóÓòÒöÖőŐõÕøØšŠşŞţŢúÚüÜűŰųŲūŪýÝžŽ')" == "aaaaaaaaaaaaaaaeaeccccccddeeeeeeeegiiiiiiiiinnnnoooooooooooossssttuuuuuuuuuuyyzz";
 }
-
-# shellcheck disable=SC2139 disable=SC1083
-alias best_ubuntu_server="curl -s http://mirrors.ubuntu.com/mirrors.txt | xargs -n1 -I {} sh -c 'echo $(curl -r 0-102400 -s -w %{speed_download} -o /dev/null {}/ls-lR.gz) {}' | sort -gr | head -3 | awk '{ print $2 }'"
-alias clock='while sleep 1;do tput sc;tput cup 0 $(($(tput cols)-29));date;tput rc;done &'
-alias dkelc='docker exec -it $(dklcid) bash --login'
-alias dklcip='docker inspect -f "{{.NetworkSettings.IPAddress}}" $(docker ps -l -q)'
-alias get_developer_excuses='curl -s  http://developerexcuses.com/ | grep nofollow | grep -Eo ">[^<]+" | cut -b 2-'
-alias make1mb='truncate -s 1m ./1MB.dat'
-alias myip='curl -A "firefox" -s https://www.ignaciocano.com/ip'
-alias http_server='python -m SimpleHTTPServer'
-# shellcheck disable=SC2142
-alias remove_duplicated_lines='awk '\''!x[$0]++'\'''
-alias smtp_debug_server='python -m smtpd -n -c DebuggingServer localhost:1025'
-alias timewatch='(trap '\''kill -sSIGHUP $PPID'\'' SIGINT && echo "Stop it with ^D" && time read)'
-alias upgrade_fzf='cd ~/.fzf && git pull && ./install'
-alias what_the_commit="curl -s whatthecommit.com | grep '<p>' | sed 's/<p>//g'"
-
-# https://cirw.in/blog/bracketed-paste
-# http://thejh.net/misc/website-terminal-copy-paste
-alias enable_bracketed_paste_mode='printf "\e[?2004h"'
-alias disable_bracketed_paste_mode='printf "\e[?2004l"'
 
 # https://github.com/nvbn/thefuck
 alias fuck='eval $(thefuck $(fc -ln -1))'
