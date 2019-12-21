@@ -90,6 +90,7 @@ alias vim=__vim
 
 # one-liner utilities
 function bak () { [ -r "$1" ] && mv "$1"{,.bak}; }
+function check_root () { if [ $(id -u) != 0 ]; then echo "ERROR: You must be root user to run this program"; exit; fi; }
 function cmd2img () { convert -font courier -pointsize 12 -background black -fill white label:"$("$@")" -trim output.png; }
 function http_compression { curl -s -I -H "Accept-Encoding: br,gzip,deflate" -A "firefox" "$1" | grep -i "Content-Encoding"; }
 function http_status () { curl -s -o /dev/null -w "%{http_code}" -A "firefox" "$1"; }
