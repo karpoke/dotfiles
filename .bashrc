@@ -2,13 +2,14 @@
 # http://mywiki.wooledge.org/BashFAQ/028
 DOTFILES_DIR="$(readlink -f "${BASH_SOURCE%/*}")"
 DOCKERIZED_APPS_DIR="$(readlink -f "$DOTFILES_DIR/../dockerize")"
+SCRIPTS_DIR="$(readlink -f "$DOTFILES_DIR/../scripts")"
 
 export CDPATH=:..:~:~/projects:$CDPATH
 export EDITOR=/usr/bin/vim
 export HISTSIZE=20000000
 export HISTFILESIZE=$HISTSIZE
 export MANPAGER='less -s -M +Gg -X'
-export PATH=$PATH:$DOCKERIZED_APPS_DIR
+export PATH=$PATH:$SCRIPTS_DIR:$DOCKERIZED_APPS_DIR
 
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell
