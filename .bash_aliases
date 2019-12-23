@@ -40,7 +40,6 @@ complete -c apd apg aph api apr
 alias cp='cp -i'
 alias curl='curl -s -C-'
 alias dmesg='dmesg -wH'
-alias grep='grep --color -i --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias ln='ln -v'
 alias ls='ls --color=tty'
 alias mkdir='mkdir -pv'
@@ -87,6 +86,7 @@ alias disable_bracketed_paste_mode='printf "\e[?2004l"'
 alias cat=__cat
 alias cd=__cd
 alias df=__df
+alias grep=__grep
 alias vim=__vim
 
 # one-liner utilities
@@ -208,6 +208,10 @@ function __df () {
     else
         /bin/df "$@"
     fi
+}
+
+function __grep () {
+    /bin/grep --color -i --exclude-dir={.bzr,CVS,.git,.hg,.svn} "$@" | /bin/grep -v grep
 }
 
 function reattach () {
