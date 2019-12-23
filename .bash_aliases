@@ -38,6 +38,7 @@ alias apr='sudo apt purge'
 complete -c apd apg aph api apr
 
 alias cp='cp -i'
+alias curl='curl -s -C-'
 alias dmesg='dmesg -wH'
 alias grep='grep --color -i --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias ln='ln -v'
