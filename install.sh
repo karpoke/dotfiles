@@ -16,6 +16,7 @@ sudo apt install \
     fonts-powerline \
     foremost \
     fswebcam \
+    gawk \
     getmail4 \
     git \
     gnupg2 \
