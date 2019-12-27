@@ -32,7 +32,6 @@ sudo apt install \
     lnav \
     locate \
     mailutils \
-    megatools \
     mlocate \
     multitail \
     ncftp \
