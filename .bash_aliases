@@ -37,18 +37,18 @@ alias apr='sudo apt purge'
 # add autocompletion for aliases
 complete -c apd apg aph api apr
 
-alias cp='cp -i'
-alias curl='curl -s -C-'
-alias dmesg='dmesg -wH'
-alias ln='ln -v'
-alias ls='ls --color=tty'
-alias mkdir='mkdir -pv'
-alias mv='mv -iv'
-alias rm='rm -iv'
-alias rsync='rsync -vh'
-alias ssh='ssh -C'
-alias wget='wget -c'
-alias xargs='xargs -r'
+alias cp='cp -i'           # --interactive
+alias curl='curl -s -C-'   # --silent --continue-at automatically
+alias dmesg='dmesg -wH'    # --follow --human
+alias ln='ln -v'           # --verbose
+alias ls='ls --color=tty'  # --color when tty
+alias mkdir='mkdir -pv'    # --parent --verbose
+alias mv='mv -iv'          # --interactive --verbose
+alias rm='rm -Iv'          # prompt once, --verbose
+alias rsync='rsync -hv'    #  --human-readable --verbose
+alias ssh='ssh -C'         # requests compression
+alias wget='wget -c'       # --continue
+alias xargs='xargs -r'     # --no-run-if-empty
 
 # shellcheck disable=SC2139 disable=SC1083
 alias best_ubuntu_server="curl -s http://mirrors.ubuntu.com/mirrors.txt | xargs -n1 -I {} sh -c 'echo $(curl -r 0-102400 -s -w %{speed_download} -o /dev/null {}/ls-lR.gz) {}' | sort -gr | head -3 | awk '{ print $2 }'"
