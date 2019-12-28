@@ -10,6 +10,7 @@ sudo apt install \
     docker-ce \
     dnsutils \
     dsh \
+    ecryptfs-utils \
     etckeeper \
     fdupes \
     filezilla \
