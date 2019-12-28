@@ -104,7 +104,7 @@ __k_jobs () {
 }
 
 __k_mail () {
-    if test -x mail; then
+    if command -v mail; then
         num=$(mail -L :u 2>&1 | grep -v "No message" | grep -v "No mail" | wc -l)
         if [ "$num" -gt 0 ]; then
             echo "✉ $num "
@@ -113,7 +113,7 @@ __k_mail () {
 }
 
 __k_cron () {
-    if test -x atq; then
+    if command -v atq; then
         num=$(atq | wc -l)
         if [ "$num" -gt 0 ]; then
             echo "⏰ $num "
