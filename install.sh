@@ -30,6 +30,7 @@ sudo apt install \
     keepassx \
     libpam-dev \
     libssl-dev \
+    libxml2-dev \
     lnav \
     locate \
     mailutils \
