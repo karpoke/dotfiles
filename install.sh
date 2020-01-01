@@ -11,6 +11,7 @@ sudo apt install \
     dnsutils \
     dsh \
     ecryptfs-utils \
+    ethtool \
     etckeeper \
     fdupes \
     filezilla \
