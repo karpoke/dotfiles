@@ -11,6 +11,7 @@ sudo apt install \
     dnsutils \
     dsh \
     duplicity \
+    ecm \
     ecryptfs-utils \
     ethtool \
     etckeeper \
