@@ -36,7 +36,9 @@ sudo apt install \
     libxml2-dev \
     lnav \
     locate \
+    lvm2 \
     mailutils \
+    mdadm \
     mlocate \
     multitail \
     ncftp \
@@ -46,10 +48,12 @@ sudo apt install \
     pydf \
     python-pip \
     rdfind \
+    reiserfsprogs \
     reptyr \
     scalpel \
     shellcheck \
     silversearcher-ag \
+    smartmontools \
     sqlite3 \
     sqlitebrowser \
     testdisk \
