@@ -54,6 +54,12 @@ alias xargs='xargs -r'     # --no-run-if-empty
 alias best_ubuntu_server="curl -s http://mirrors.ubuntu.com/mirrors.txt | xargs -n1 -I {} sh -c 'echo $(curl -r 0-102400 -s -w %{speed_download} -o /dev/null {}/ls-lR.gz) {}' | sort -gr | head -3 | awk '{ print $2 }'"
 alias ch644='find . -type f -exec chmod -R 644 {} \;'
 alias ch755='find . -type d -exec chmod -R 755 {} \;'
+alias ch664='find . -type f -exec chmod -R 664 {} \;'
+alias ch775='find . -type d -exec chmod -R 775 {} \;'
+alias sch644='sudo find . -type f -exec chmod -R 645 {} \;'
+alias sch755='sudo find . -type d -exec chmod -R 755 {} \;'
+alias sch664='sudo find . -type f -exec chmod -R 664 {} \;'
+alias sch775='sudo find . -type d -exec chmod -R 775 {} \;'
 alias clock='while sleep 1;do tput sc;tput cup 0 $(($(tput cols)-29));date;tput rc;done &'
 alias cls='clear'
 alias cpv='rsync -ah --info=progress2'
