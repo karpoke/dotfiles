@@ -94,6 +94,7 @@ alias cat=__cat
 alias cd=__cd
 alias df=__df
 alias grep=__grep
+alias last=__last
 alias vim=__vim
 
 # one-liner utilities
@@ -222,6 +223,11 @@ function __df () {
 
 function __grep () {
     /bin/grep --color -i --exclude-dir={.bzr,CVS,.git,.hg,.svn} "$@" | /bin/grep -v grep
+}
+
+function __last () {
+    # show `last` results in reverse order
+    /usr/bin/last "$@" | tac
 }
 
 function reattach () {
