@@ -45,7 +45,7 @@ sudo apt install \
     ngrep \
     nocache \
     oathtool \
-    pgadmin3 \
+    pgadmin4 \
     pydf \
     python-pip \
     rdfind \
