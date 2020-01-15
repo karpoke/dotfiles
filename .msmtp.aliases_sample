@@ -1,0 +1,9 @@
+# Example aliases file
+
+# pi: username@example.com
+
+# Send root to one or more email accounts
+# root: root@example.com, other@example.com
+
+# Send everything else to me
+default: default@example.com

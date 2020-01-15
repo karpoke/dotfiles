@@ -17,3 +17,7 @@ password       plain-text-password
 
 # Set a default account
 account default : gmail
+
+aliases        ~/.msmtp.aliases
+
+# vim:filetype=msmtp
