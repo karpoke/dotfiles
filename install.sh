@@ -40,6 +40,8 @@ sudo apt install \
     mailutils \
     mdadm \
     mlocate \
+    msmtp \
+    msmtp-mta \
     multitail \
     ncftp \
     ngrep \
