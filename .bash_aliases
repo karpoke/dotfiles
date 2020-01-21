@@ -112,6 +112,7 @@ function pysslcertspath () { python -c "import ssl; print(ssl.get_default_verify
 function random_string () { local -i LEN="${1:-12}"; </dev/urandom tr -dc '[:print:]' | tr -d ''\''\\"' | head -c "$LEN"; }
 function random_uuid_to_dev () { dev="$1"; sudo umount /dev/"$dev" && tune2fs /dev/"$dev" -U random; }
 function rip_audio () { output="${1%.*}-ripped.${1##*.}"; mplayer -ao pcm -vo null -vc dummy -dumpaudio -dumpfile "$output" "$1"; }
+function show_fonts () { mkdir -p /tmp/fonts; convert -list font | awk -F: '/^\ *Font: /{print substr($NF,2)}' | while read -r font ; do convert -size 600x400 xc: -annotate +10+10 "$font" -gravity center -pointsize 42 -font "$font" -annotate +0+0 'ABCDEF\nabcdef\n012345\n!@$%%' -flatten "/tmp/fonts/$font".png ; done; }
 function slugify () { echo "$*" | iconv -t ascii//TRANSLIT | sed -E 's/[^a-zA-Z0-9]+/-/g' | sed -E 's/^-+|-+$//g' | tr '[:upper:]' '[:lower:]'; }
 function t () { if tmux list-sessions >/dev/null; then tmux attach; else tmux; fi; }
 function vim_encoding_sample () { vim 'https://www.cl.cam.ac.uk/~mgk25/ucs/examples/UTF-8-demo.txt'; }
