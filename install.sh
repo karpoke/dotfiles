@@ -1,99 +1,36 @@
 #!/bin/bash
 
-# admin
-sudo apt install \
-    atop \
-    bleachbit \
-    convmv \
-    ddrescue \
-    deborphan \
-    docker-ce \
-    dnsutils \
-    dsh \
-    duplicity \
-    ecm \
-    ecryptfs-utils \
-    ethtool \
-    etckeeper \
-    fdupes \
-    filezilla \
-    fonts-powerline \
-    foremost \
-    fswebcam \
-    gawk \
-    getmail4 \
-    git \
-    gnupg2 \
-    hdparm \
-    highlight \
-    htop \
-    iftop \
-    iotop \
-    ipcalc \
-    keepassx \
-    libpam-dev \
-    libssl-dev \
-    libxml2-dev \
-    lnav \
-    locate \
-    lvm2 \
-    mailutils \
-    mdadm \
-    mlocate \
-    msmtp \
-    msmtp-mta \
-    multitail \
-    ncftp \
-    ngrep \
-    nocache \
-    oathtool \
-    pgadmin4 \
-    pydf \
-    python-pip \
-    rdfind \
-    reiserfsprogs \
-    reptyr \
-    scalpel \
-    shellcheck \
-    silversearcher-ag \
-    smartmontools \
-    sqlite3 \
-    sqlitebrowser \
-    testdisk \
-    thefuck \
-    tig \
-    tldr \
-    tmux \
-    tmuxinator \
-    vim \
-    virtualenvwrapper \
-    xclip
+# install packages
+read -rp "Install admin packages? [y/N] " yn
+if [ "$yn" == "y" ]; then
+    while read -r pkg; do
+        pkgs="$pkgs $pkg"
+    done <<< "$(grep -v "#" admin.packages)"
+    echo sudo apt install "$pkgs"
+fi
 
-# gnome
-sudo apt install \
-    chrome-gnome-shell \
-    gnome-shell-extension-suspend-button \
-    gnome-tweak-tool
+read -rp "Install desktop packages? [y/N] " yn
+if [ "$yn" == "y" ]; then
+    while read -r pkg; do
+        pkgs="$pkgs $pkg"
+    done <<< "$(grep -v "#" desktop.packages)"
+    echo sudo apt install "$pkgs"
+fi
 
-# suspend button extension allows to modify the suspend/shutdown button in the
-# status menu using Alt. must be manually enabled with gnome tweak tool
+read -rp "Install hpcv packages? [y/N] " yn
+if [ "$yn" == "y" ]; then
+    while read -r pkg; do
+        pkgs="$pkgs $pkg"
+    done <<< "$(grep -v "#" hpcv.packages)"
+    echo sudo apt install "$pkgs"
+fi
 
-# hpvc
-sudo apt install \
-    hydra \
-    medusa \
-    ncrack \
-    nmap \
-    patator
-
-# customize by host
-HOSTNAMES=("rpi")
-if [[ "${HOSTNAMES[*]}" =~ $(hostname) ]]; then
-    sudo apt install \
-        ddclient \
-        jdupes \
-        transmission-daemon \
-        transmission-remote-cli
+read -rp "Install rpi packages? [y/N] " yn
+if [ "$yn" == "y" ]; then
+    while read -r pkg; do
+        pkgs="$pkgs $pkg"
+    done <<< "$(grep -v "#" rpi.packages)"
+    echo sudo apt install "$pkgs"
 fi
 
 pip install --upgrade pip
