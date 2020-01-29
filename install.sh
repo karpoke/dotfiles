@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # install packages
+pkgs=""
 read -rp "Install admin packages? [y/N] " yn
 if [ "$yn" == "y" ]; then
     while read -r pkg; do
         pkgs="$pkgs $pkg"
     done <<< "$(grep -v "#" admin.packages)"
-    echo sudo apt install "$pkgs"
 fi
 
 read -rp "Install desktop packages? [y/N] " yn
@@ -14,7 +14,6 @@ if [ "$yn" == "y" ]; then
     while read -r pkg; do
         pkgs="$pkgs $pkg"
     done <<< "$(grep -v "#" desktop.packages)"
-    echo sudo apt install "$pkgs"
 fi
 
 read -rp "Install hpcv packages? [y/N] " yn
@@ -22,15 +21,17 @@ if [ "$yn" == "y" ]; then
     while read -r pkg; do
         pkgs="$pkgs $pkg"
     done <<< "$(grep -v "#" hpcv.packages)"
-    echo sudo apt install "$pkgs"
 fi
 
-read -rp "Install rpi packages? [y/N] " yn
+read -rp "Install raspberry packages? [y/N] " yn
 if [ "$yn" == "y" ]; then
     while read -r pkg; do
         pkgs="$pkgs $pkg"
     done <<< "$(grep -v "#" rpi.packages)"
-    echo sudo apt install "$pkgs"
+fi
+
+if [ -n "$pkgs" ]; then
+    sudo apt install "$pkgs"
 fi
 
 pip install --upgrade pip
