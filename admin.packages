@@ -4,14 +4,14 @@ convmv
 corkscrew
 ddrescue
 deborphan
-docker-ce
 dnsutils
+docker-ce
 dsh
 duplicity
 ecm
 ecryptfs-utils
-ethtool
 etckeeper
+ethtool
 fdupes
 filezilla
 fonts-powerline
@@ -37,6 +37,7 @@ lvm2
 mailutils
 mdadm
 mlocate
+mpack
 msmtp
 msmtp-mta
 multitail
