@@ -42,10 +42,10 @@ export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 [ -r /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 
 # shellcheck disable=SC1090
-[ -f "$DOTFILES_DIR/.bash_aliases" ] && source "$DOTFILES_DIR/.bash_aliases"
+[ -r "$DOTFILES_DIR/.bash_aliases" ] && source "$DOTFILES_DIR/.bash_aliases"
 # shellcheck disable=SC1090
-[ -f "$DOTFILES_DIR/jump.sh" ] && source "$DOTFILES_DIR/jump.sh"
+[ -r "$DOTFILES_DIR/jump.sh" ] && source "$DOTFILES_DIR/jump.sh"
 # shellcheck disable=SC1090
-[ -f "$DOTFILES_DIR/git_custom_prompt" ] && source "$DOTFILES_DIR/git_custom_prompt"
+[ -r "$DOTFILES_DIR/git_custom_prompt" ] && source "$DOTFILES_DIR/git_custom_prompt"
 # shellcheck disable=SC1090
-[ -f "$DOTFILES_DIR/.less_termcap" ] && source "$DOTFILES_DIR/.less_termcap"
+[ -r "$DOTFILES_DIR/.less_termcap" ] && source "$DOTFILES_DIR/.less_termcap"
