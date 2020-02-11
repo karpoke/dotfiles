@@ -35,8 +35,11 @@ command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {} | he
 export FZF_CTRL_R_OPTS='--sort --exact --preview "echo {}" --preview-window down:3:hidden:wrap --bind "?:toggle-preview"'
 
 command -v direnv > /dev/null && eval "$(direnv hook bash)"
+
+export WORKON_HOME="$HOME/.virtualenvs"
 # export VIRTUALENVWRAPPER_SCRIPT=/usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+[ -r /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 
 # shellcheck disable=SC1090
 [ -f "$DOTFILES_DIR/.bash_aliases" ] && source "$DOTFILES_DIR/.bash_aliases"
