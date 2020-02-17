@@ -37,7 +37,8 @@ fi
 pip install --upgrade pip
 pip install \
     ipython \
-    pdbpp
+    pdbpp \
+    virtualenvwrapper
 
 ipython profile create
 
