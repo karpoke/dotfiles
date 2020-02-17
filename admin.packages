@@ -33,6 +33,7 @@ libssl-dev
 libxml2-dev
 lnav
 locate
+logwatch
 lvm2
 mailutils
 mdadm
