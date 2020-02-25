@@ -101,7 +101,9 @@ test ! -e "${DOTFILES_DIR}/.i3" && ln -s "${DOTFILES_DIR}/.i3 ~/.i3"
 test ! -e "${DOTFILES_DIR}/.inputrc" && ln -s "${DOTFILES_DIR}/.inputrc ~/.inputrc"
 test ! -e "${DOTFILES_DIR}/.gitconfig" && ln -s "${DOTFILES_DIR}/.gitconfig ~/.gitconfig"
 test ! -e "${DOTFILES_DIR}/.tmux.conf" && ln -s "${DOTFILES_DIR}/.tmux.conf ~/.conf"
+test ! -e "${DOTFILES_DIR}/.tsocks.conf" && ln -s "${DOTFILES_DIR}/.tsocks.conf ~/.tsocks.conf"
 test ! -e "${DOTFILES_DIR}/.vimrc" && ln -s "${DOTFILES_DIR}/.vimrc ~/.vimrc"
+test ! -e "${DOTFILES_DIR}/.proxychains" && ln -s "${DOTFILES_DIR}/.proxychains ~/.proxychains"
 
 # vim plugins
 # Install Vudle:  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
