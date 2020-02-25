@@ -47,6 +47,7 @@ ngrep
 nocache
 oathtool
 pgadmin4
+proxychains
 pydf
 python-pip
 rdfind
