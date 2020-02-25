@@ -110,6 +110,7 @@ function ffind () { find . -iname "*$**"; }
 function http_compression { curl -s -I -H "Accept-Encoding: br,gzip,deflate" -A "firefox" "$1" | grep -i "Content-Encoding"; }
 function http_status () { curl -s -o /dev/null -w "%{http_code}" -A "firefox" "$1"; }
 function ipinfo () { curl -s "http://ipinfo.io/$1"; }
+function lnp () { mkdir -p "$(dirname "$2")" && ln -s "$1" "$2"; }
 function pyimport () { python -c "import $1"; }
 function pypath () { python -c "import os, $1; print(os.path.dirname($1.__file__))"; }
 function pysslcertspath () { python -c "import ssl; print(ssl.get_default_verify_paths())"; }
