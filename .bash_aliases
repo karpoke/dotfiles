@@ -192,6 +192,8 @@ function __vim () {
         sudo vigr
     elif [ "$fn" == "/etc/sudoers" ]; then
         sudo visudo
+    elif [[ "$fn" =~ /etc/sudoers.d/.* ]]; then
+        sudo visudo -f "$fn"
     else
         # allow things like this:
         # vim foo/bar.c:123
