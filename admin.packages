@@ -40,6 +40,7 @@ lvm2
 mailutils
 mdadm
 mlocate
+moreutils
 mpack
 msmtp
 msmtp-mta
