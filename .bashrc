@@ -49,3 +49,6 @@ export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 [ -r "$DOTFILES_DIR/git_custom_prompt" ] && source "$DOTFILES_DIR/git_custom_prompt"
 # shellcheck disable=SC1090
 [ -r "$DOTFILES_DIR/.less_termcap" ] && source "$DOTFILES_DIR/.less_termcap"
+
+# remove duplicates in bash history
+clean_repeated_history
