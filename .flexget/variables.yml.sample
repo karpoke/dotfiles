@@ -1,0 +1,13 @@
+email:
+  from: from@example.com
+  to: to@example.com
+series:
+  settings:
+    tv:
+      set:
+        path: ~/Movies
+telegram:
+  bot_token: token
+  username: username
+transmission:
+  netrc: ~/.netrc

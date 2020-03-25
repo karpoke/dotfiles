@@ -1,0 +1,200 @@
+# check config: flexget check
+# execute (cron): flexget execute --cron
+# execute one task: flexget execute --task get-subtitles
+# execute one task (test): flexget --text execute --task get-subtitles
+# get series list: flexget series list
+# show info: flexget series show NAME
+# download again:
+#   flexget series forget NAME
+#   flexget series begin NAME S03E17
+# failed: flexget failed list || flexget failed clear
+
+# https://flexget.com/Plugins/variables
+variables: variables.yml
+
+templates:
+  tv:
+
+    # manipulate:
+    #   - title: &the
+    #       replace:
+    #         regexp: '^The\W'
+    #         format: ''
+    #   - filename: *the
+    #   - series_name: *the
+    plugin_priority:
+      # manipulate must fix the titles before metainfo_series
+      manipulate: 255
+
+    # http://flexget.com/wiki/Plugins/content_filter
+    content_filter:
+      require_mainfile: yes
+      require:
+        - '*.avi'
+        - '*.mkv'
+        - '*.mp4'
+      reject:
+        - '*.lnk'
+        - '*.wmv'
+        - '*.rar'
+        - '*.zip'
+        - '*password*'
+
+    # http://flexget.com/wiki/Plugins/thetvdb_lookup
+    thetvdb_lookup: yes
+
+    # https://flexget.com/Plugins/require_field
+    # require_field:
+    #   - tvdb_first_air_date
+
+    # https://flexget.com/Plugins/if
+    if:
+      - tvdb_first_air_date != None and tvdb_first_air_date > now: reject
+
+    # http://flexget.com/wiki/Plugins/manipulate
+    manipulate:
+      - url:
+          replace:
+            regexp: '&amp'
+            format: '&'
+      - description:
+          remove: yes
+
+    # http://flexget.com/wiki/Plugins/private_torrents
+    private_torrents: no
+
+    # http://flexget.com/wiki/Plugins/torrent_alive
+    torrent_alive:
+      min_seeds: 7
+      reject_for: 1 day
+
+    # http://flexget.com/wiki/Plugins/regexp
+    regexp:
+      reject:
+        #- WEB
+        - WEB-DL
+        - FRENCH
+        - VOSTFR
+
+    # http://flexget.com/wiki/Plugins/series
+    # http://flexget.com/wiki/Cookbook/Series
+    series:
+      settings:
+        tv:
+          exact: yes
+          propers: 3 days
+          # https://flexget.com/Qualities#Requirements
+          quality: hdtv
+          set:
+            path: '{? series.settings.tv.set.path ?}'
+            # path: /mnt/data/Series/{{series_name}}
+            skip_files:
+              - '*.nfo'
+              - '*.sfv'
+              - '*.txt'
+              - '*[sS]ample*'
+            thetvdb_lookup: yes
+            include_subs: yes
+      tv:
+        # http://flexget.com/wiki/Plugins/series/identified_by
+        # identified_by: auto
+        # ep_regexp: (\d\d\d)
+        # name_regexp: ^Nombre.*Temporada \d
+        - Stan Lees Lucky Man:
+            begin: S02E01
+
+    # http://flexget.com/wiki/Plugins/transmission
+    # pip install transmissionrpc
+    transmission:
+      netrc: '{? transmission.netrc ?}'
+
+    notify:
+      entries:
+        via:
+          # https://flexget.com/Plugins/Notifiers/telegram
+          # pip install python-telegram-bot
+          - telegram:
+              bot_token: '{? telegram.bot_token ?}'
+              parse_mode: markdown
+              disable_previews: no
+              recipients:
+                - username: '{? telegram.username ?}'
+          # https://flexget.com/Plugins/Notifiers/xmpp
+          # pip install sleekxmpp dnspython
+          # - xmpp:
+          #     sender: '{? xmpp.sender ?}'
+          #     password: '{? xmpp.password ?}'
+          #     recipients: '{? xmpp.recipients?}'
+          #     # title: 'New episode(s)!'
+          #     # text: '{{series_name}} {{tvdb_ep_id|default(series_id)}}{% if tvdb_ep_name|default(False) %}: {{tvdb_ep_name}}{% endif %}'
+
+    # http://flexget.com/wiki/Plugins/headers
+    # http://discuss.flexget.com/t/torcache-client-error-403-forbidden/1469/6
+    headers:
+      User-Agent: "Mozilla/5.0 (Windows NT 5.1; rv:16.0) Gecko/20100101 Firefox/16.0"
+
+# http://flexget.com/wiki/Plugins/email
+# email:
+#   from: '{? email.from ?}'
+#   to: '{? email.to ?}'
+
+tasks:
+
+  eztv.ag:
+    priority: 1
+    # https://flexget.com/Plugins/rss
+    rss: https://eztv.ag/ezrss.xml
+    template: tv
+    # content_size:
+    #   min: 250
+    #   max: 400
+    #     manipulate:
+    #      - title:
+    #          replace:
+    #            regexp: '\['
+    #            format: '.'
+    #   strict: no
+
+  get-subtitles:
+    # https://flexget.com/Plugins/filesystem
+    filesystem:
+      path: '{? series.settings.tv.set.path ?}'
+      regexp: '.*\.(avi|mkv|mp4)$'
+      recursive: yes
+    accept_all: yes
+    seen: local
+    # http://flexget.com/wiki/Plugins/subliminal
+    subliminal:
+      languages:
+        - eng
+      # alternatives:
+      #   - esp
+      exact_match: yes
+      providers: [opensubtitles, thesubdb, podnapisi, addic7ed, tvsubtitles]
+      #single: no
+
+  # new shiny automatic searching
+  # warning: use OpenDNS: 208.67.222.222 and 208.67.220.220
+  search series:
+    template: [tv]
+    verify_ssl_certificates: no
+    # http://flexget.com/wiki/Plugins/discover
+    discover:
+      release_estimations:
+        optimistic: 7 days
+      what:
+        - next_series_episodes: yes
+      # https://flexget.com/Searches
+      # flexget plugins --interface search
+      from:
+        - 1337x: yes
+        - piratebay:
+            category: tv
+            sort_by: seeds
+        - rarbg:
+            category: [2, 18, 41, 49]
+            sorted_by: seeders
+            use_tvdb: True
+        #- torrentz: good
+      interval: 3 hour  # Search for expected episodes again every hour
+
