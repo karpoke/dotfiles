@@ -89,6 +89,7 @@ templates:
             path: '{? series.settings.tv.set.path ?}'
             # path: /mnt/data/Series/{{series_name}}
             skip_files:
+              - '*.jpg'
               - '*.nfo'
               - '*.sfv'
               - '*.txt'
