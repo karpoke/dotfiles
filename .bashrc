@@ -4,6 +4,7 @@ DOTFILES_DIR="$(readlink -f "${BASH_SOURCE%/*}")"
 DOCKERIZED_APPS_DIR="$(readlink -f "$DOTFILES_DIR/../dockerize")"
 SCRIPTS_DIR="$(readlink -f "$DOTFILES_DIR/../scripts")"
 
+export DOTFILES_DIR
 export CDPATH=:..:~:~/projects:$CDPATH
 export EDITOR=/usr/bin/vim
 export HISTSIZE=20000000

@@ -102,6 +102,7 @@ alias last=__last
 alias vim=__vim
 
 # one-liner utilities
+function alert_when_site_is_up () { while ! curl -m 60 "$1"; do sleep 60; done; play -q "$DOTFILES_DIR/hostdown.wav" 2>/dev/null; }
 function bak () { [ -r "$1" ] && mv "$1"{,.bak}; }
 function check_http_https_ports () { ss -o state established '( sport = :http or sport = :https )'; }
 function check_root () { if [ "$(id -u)" -ne 0 ]; then echo "ERROR: You must be root user to run this program"; exit; fi; }
