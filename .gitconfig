@@ -38,6 +38,7 @@
     lg = log -p
     st = status
     st-only-names = "!f() { git status --porcelain | sed s/^...//; }; f"
+    praise = blame
 
     # hg equivalencies
     forget = rm --cached
