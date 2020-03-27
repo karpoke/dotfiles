@@ -4,6 +4,7 @@
 # https://github.com/Bash-it/bash-it/tree/master/aliases/available
 # https://github.com/ohmybash/oh-my-bash/tree/master/aliases
 # https://www.commandlinefu.com/commands/browse
+# https://twitter.com/climagic
 
 # remember:
 # ^xe       Open an editor and execute a command
