@@ -84,7 +84,7 @@ templates:
           exact: yes
           propers: 3 days
           # https://flexget.com/Qualities#Requirements
-          quality: hdtv
+          quality: h264 1080p
           set:
             path: '{? series.settings.tv.set.path ?}'
             # path: /mnt/data/Series/{{series_name}}
