@@ -1,6 +1,8 @@
 # check config: flexget check
-# execute (cron): flexget execute --cron
-# execute one task: flexget execute --task get-subtitles
+# execute (cron): flexget --cron execute
+# execute one task:
+#   flexget execute --task get-subtitles
+#   flexget execute --task search-series --discover-now
 # execute one task (test): flexget --text execute --task get-subtitles
 # get series list: flexget series list
 # show info: flexget series show NAME
@@ -164,28 +166,10 @@ tasks:
     #            format: '.'
     #   strict: no
 
-  get-subtitles:
-    # https://flexget.com/Plugins/filesystem
-    filesystem:
-      path: '{? series.settings.tv.set.path ?}'
-      regexp: '.*\.(avi|mkv|mp4)$'
-      recursive: yes
-    accept_all: yes
-    seen: local
-    # http://flexget.com/wiki/Plugins/subliminal
-    subliminal:
-      languages:
-        - eng
-      # alternatives:
-      #   - esp
-      exact_match: yes
-      providers: [opensubtitles, thesubdb, podnapisi, addic7ed, tvsubtitles]
-      #single: no
-
   # new shiny automatic searching
   # warning: use OpenDNS: 208.67.222.222 and 208.67.220.220
-  search series:
-    template: [tv]
+  search-series:
+    template: tv
     verify_ssl_certificates: no
     # http://flexget.com/wiki/Plugins/discover
     discover:
@@ -215,4 +199,22 @@ tasks:
         #     sort_by: seeds
         # - torrentz: good
       interval: 3 hour  # Search for expected episodes again every hour
+
+  get-subtitles:
+    # https://flexget.com/Plugins/filesystem
+    filesystem:
+      path: '{? series.settings.tv.set.path ?}'
+      regexp: '.*\.(avi|mkv|mp4)$'
+      recursive: yes
+    accept_all: yes
+    seen: local
+    # http://flexget.com/wiki/Plugins/subliminal
+    subliminal:
+      languages:
+        - eng
+      # alternatives:
+      #   - esp
+      exact_match: yes
+      providers: [opensubtitles, thesubdb, podnapisi, addic7ed, tvsubtitles]
+      #single: no
 
