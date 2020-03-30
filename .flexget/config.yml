@@ -106,6 +106,10 @@ templates:
         # name_regexp: ^Nombre.*Temporada \d
         - Stan Lees Lucky Man:
             begin: S02E01
+        - The Sinner:
+            begin: S03E01
+        - The Walking Dead:
+            begin: S10E09
 
     # http://flexget.com/wiki/Plugins/transmission
     # pip install transmissionrpc
