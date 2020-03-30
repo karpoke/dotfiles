@@ -151,7 +151,6 @@ templates:
 tasks:
 
   eztv.ag:
-    priority: 1
     # https://flexget.com/Plugins/rss
     rss: https://eztv.ag/ezrss.xml
     template: tv
