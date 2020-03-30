@@ -43,6 +43,9 @@ templates:
     # http://flexget.com/wiki/Plugins/thetvdb_lookup
     thetvdb_lookup: yes
 
+    # https://flexget.com/Plugins/imdb_lookup
+    # imdb_lookup: yes
+
     # https://flexget.com/Plugins/require_field
     # require_field:
     #   - tvdb_first_air_date
@@ -111,6 +114,8 @@ templates:
 
     notify:
       entries:
+        # https://flexget.com/Entry#Knownfields
+        message: 'Downloading: {{series_name}} {{series_id}} ⭐{{tvdb_rating}} ⏲️{{tvdb_runtime}}min'
         via:
           # https://flexget.com/Plugins/Notifiers/telegram
           # pip install python-telegram-bot
