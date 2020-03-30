@@ -195,15 +195,24 @@ tasks:
         - next_series_episodes: yes
       # https://flexget.com/Searches
       # flexget plugins --interface search
+      # flexget doc yts
       from:
         - 1337x: yes
-        - piratebay:
+        - descargas2020: yes
+        - limetorrents:
             category: tv
-            sort_by: seeds
+            order_by: date
         - rarbg:
             category: [2, 18, 41, 49]
             sorted_by: seeders
             use_tvdb: True
-        #- torrentz: good
+        - yts: yes
+        # - argenteam:
+        #     force_subtitles: no
+        # - newtorrents: yes
+        # - piratebay:
+        #     category: tv
+        #     sort_by: seeds
+        # - torrentz: good
       interval: 3 hour  # Search for expected episodes again every hour
 
