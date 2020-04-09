@@ -14,6 +14,24 @@
 # https://flexget.com/Plugins/variables
 variables: variables.yml
 
+# scheduling
+# To start the daemon at system boot you could use one of the following cronjob:
+#   @reboot /usr/local/bin/flexget daemon start -d
+#   @reboot . $HOME/.virtualenvs/flexget/bin/activate && flexget daemon start -d --autoreload-config
+# To manage daemon:
+#   flexget daemon stop
+#   flexget daemon status
+#   flexget daemon reload-config
+
+# https://flexget.com/InstallWizard/Linux/Scheduling
+schedules:
+  - tasks: '*'
+    interval:
+      hours: 3
+  # - tasks: [search-series, get-subtitles]
+  #   interval:
+  #     minutes: 30
+
 templates:
   tv:
 
