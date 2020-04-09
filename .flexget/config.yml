@@ -124,22 +124,31 @@ templates:
           set:
             path: '{? series.settings.tv.set.path ?}'
             # path: /mnt/data/Series/{{series_name}}
+            main_file_only: yes
+            # If the main file is NOT found it will exclude any file matching
+            # the patterns listed in exclude_files.
+            # If a main file IS found any *.txt file will be downloaded.
+            # Because include_subs is set any *.srt, *.sub, *.idx, *.ass, *.ssa
+            # will also be downloaded.
             skip_files:
               - '*.jpg'
               - '*.nfo'
               - '*.sfv'
               - '*.txt'
               - '*[sS]ample*'
+            include_files:
+              - '*.txt'
             thetvdb_lookup: yes
             include_subs: yes
       tv:
         # http://flexget.com/wiki/Plugins/series/identified_by
         # identified_by: auto
         # ep_regexp: (\d\d\d)
-        # name_regexp: ^Nombre.*Temporada \d
+        # name_regexp: ^Name.* Season \d
         - Stan Lees Lucky Man:
             begin: S02E01
         - The Sinner:
+            # alternate_name: The Sinner (2017)
             begin: S03E01
         - The Walking Dead:
             begin: S10E09
