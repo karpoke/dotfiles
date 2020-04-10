@@ -73,6 +73,11 @@ templates:
         - '*.zip'
         - '*password*'
 
+    # https://flexget.com/Plugins/content_size
+    content_size:
+      min: 300
+      max: 2000
+
     # http://flexget.com/wiki/Plugins/thetvdb_lookup
     thetvdb_lookup: yes
 
