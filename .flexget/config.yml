@@ -113,6 +113,11 @@ templates:
       min_seeds: 7
       reject_for: 1 day
 
+    # https://flexget.com/Plugins/reorder_quality
+    # reorder_quality:
+    #   webdl:
+    #     above: dvdrip
+
     # http://flexget.com/wiki/Plugins/regexp
     regexp:
       reject:
