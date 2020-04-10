@@ -167,6 +167,10 @@ templates:
     transmission:
       netrc: '{? transmission.netrc ?}'
 
+    # https://flexget.com/Plugins/domain_delay
+    domain_delay:
+      rarbg.com: 3 seconds
+
     notify:
       entries:
         # https://flexget.com/Entry#Knownfields
