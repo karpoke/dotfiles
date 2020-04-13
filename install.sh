@@ -38,7 +38,8 @@ pip install --upgrade pip
 pip install \
     ipython \
     pdbpp \
-    virtualenvwrapper
+    virtualenvwrapper \
+    youtube-dl
 
 ipython profile create
 
