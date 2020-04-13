@@ -77,6 +77,7 @@ alias make1mb='truncate -s 1m ./1MB.dat'
 # shellcheck disable=SC2142
 alias mnt='mount | awk -F'\'' '\'' '\''{ printf "%s\t%s\n",$1,$3; }'\'' | column -t | egrep ^/dev/ | sort'
 alias myip='curl -A firefox -s https://www.ignaciocano.com/ip'
+alias num_csv_columns="awk -F, 'NR==1{print NF}'"
 alias pbpaste='xclip -selection clipboard -o'
 alias pbcopy='xclip -selection clipboard; pbpaste | xclip -selection primary; pbpaste | xclip -selection secondary'
 alias perm='stat --printf "%a %n \n"'
@@ -111,7 +112,7 @@ function clean_repeated_history () { tac "$HISTFILE" | awk '!x[$0]++' | tac | sp
 # another way of removing dupes keeping the last: history | sort -k2 -k1,1nr | uniq -f1 | sort -n | cut -f2
 function cmd2img () { convert -font courier -pointsize 12 -background black -fill white label:"$("$@")" -trim output.png; }
 function ffind () { find . -iname "*$**"; }
-function hr(){ printf '%0*d' $(tput cols) | tr 0 ${1:-_}; }
+function hr(){ printf '%0*d' "$(tput cols)" | tr 0 "${1:-_}"; }
 function http_compression { curl -s -I -H "Accept-Encoding: br,gzip,deflate" -A "firefox" "$1" | grep -i "Content-Encoding"; }
 function http_status () { curl -s -o /dev/null -w "%{http_code}" -A "firefox" "$1"; }
 function ipinfo () { curl -s "http://ipinfo.io/$1"; }
