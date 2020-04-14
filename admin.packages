@@ -15,6 +15,7 @@ ecm
 ecryptfs-utils
 etckeeper
 ethtool
+expect
 fdupes
 ffmpeg
 filezilla
