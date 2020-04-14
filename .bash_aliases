@@ -74,6 +74,7 @@ alias http_server='python -m SimpleHTTPServer'
 alias last_update='stat -c %y /var/cache/apt/pkgcache.bin'
 alias lt='ls --human-readable --size -1 -S --classify -r'
 alias make1mb='truncate -s 1m ./1MB.dat'
+alias maze='tr -cd \\\\/ </dev/urandom | fold -w $(tput cols) | sed -e "s#/#╱#g;s#\\\\#╲#g"'
 # shellcheck disable=SC2142
 alias mnt='mount | awk -F'\'' '\'' '\''{ printf "%s\t%s\n",$1,$3; }'\'' | column -t | egrep ^/dev/ | sort'
 alias myip='curl -A firefox -s https://www.ignaciocano.com/ip'
