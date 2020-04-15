@@ -47,6 +47,7 @@ moreutils
 mpack
 msmtp
 msmtp-mta
+mtr
 multitail
 ncftp
 ngrep
