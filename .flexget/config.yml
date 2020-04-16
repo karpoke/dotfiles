@@ -173,6 +173,10 @@ templates:
       netrc: '{? transmission.netrc ?}'
       magnetization_timeout: 60
 
+    exec:
+      allow_background: Yes
+      on_exit: '{? exec.on_exit ?}'
+
     # https://flexget.com/Plugins/domain_delay
     domain_delay:
       rarbg.com: 3 seconds
