@@ -130,7 +130,7 @@ templates:
           exact: yes
           propers: 3 days
           # https://flexget.com/Qualities#Requirements
-          quality: hdtv-dvdrip 1080p
+          quality: hdtv 1080p
           set:
             path: '{? series.settings.tv.set.path ?}'
             # path: /mnt/data/Series/{{series_name}}
@@ -158,6 +158,7 @@ templates:
         - Cosmos Possible Worlds:
             begin: S01E03
             alternate_name: Cosmos Possible Worlds (2020)
+            quality: hdtv 720p+
         - Stan Lees Lucky Man:
             begin: S02E01
         - The Sinner:
