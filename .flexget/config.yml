@@ -82,7 +82,7 @@ templates:
     thetvdb_lookup: yes
 
     # https://flexget.com/Plugins/imdb_lookup
-    # imdb_lookup: yes
+    imdb_lookup: yes
 
     # https://flexget.com/Plugins/require_field
     # require_field:
