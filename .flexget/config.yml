@@ -252,9 +252,9 @@ tasks:
         # - argenteam:
         #     force_subtitles: no
         # - newtorrents: yes
-        # - piratebay:
-        #     category: tv
-        #     sort_by: seeds
+        - piratebay:
+            category: tv
+            sort_by: seeds
         # - torrentz: good
       interval: 3 hour  # Search for expected episodes again every hour
 
