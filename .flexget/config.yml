@@ -148,7 +148,7 @@ templates:
               - '*.jpg'
               - '*.nfo'
               - '*.sfv'
-              - '*.txt'
+              - '*.url'
               - '*[sS]ample*'
             include_files:
               - '*.txt'
