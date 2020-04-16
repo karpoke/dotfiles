@@ -184,7 +184,7 @@ templates:
     notify:
       entries:
         # https://flexget.com/Entry#Knownfields
-        message: 'Downloading: {{series_name}} {{series_id}} ⭐{{tvdb_rating}} ⏲️{{tvdb_runtime}}min'
+        message: 'Downloading: {{series_name}} {{series_id}} ⭐{{tvdb_rating|default(imdb_score)}} ⏲️{{tvdb_runtime}}min'
         via:
           # https://flexget.com/Plugins/Notifiers/telegram
           # pip install python-telegram-bot
