@@ -171,6 +171,9 @@ templates:
     # pip install transmissionrpc
     transmission:
       netrc: '{? transmission.netrc ?}'
+      # the plugin will pause the torrent after a 5 secs wait, to allow
+      # metadata download and content renaming on magnet URIs
+      add_paused: Yes
 
     # https://flexget.com/Plugins/domain_delay
     domain_delay:
