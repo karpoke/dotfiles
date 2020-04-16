@@ -1,3 +1,4 @@
+# use absolute paths
 email:
   from: from@example.com
   to: to@example.com
@@ -5,9 +6,11 @@ series:
   settings:
     tv:
       set:
-        path: ~/Movies
+        path: /home/username/Movies
 telegram:
   bot_token: token
   username: username
 transmission:
-  netrc: ~/.netrc
+  netrc: /home/username/.netrc
+exec:
+  on_exit: /home/username/karpoke/scripts/transmission-add-trackings.sh
