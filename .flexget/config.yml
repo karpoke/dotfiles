@@ -81,10 +81,6 @@ templates:
     # http://flexget.com/wiki/Plugins/thetvdb_lookup
     thetvdb_lookup: yes
 
-    # https://flexget.com/Plugins/headers
-    headers:
-      User-Agent: "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.84 Safari/537.36"
-
     # https://flexget.com/Plugins/imdb_lookup
     # imdb_lookup: yes
 
