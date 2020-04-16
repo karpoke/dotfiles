@@ -148,7 +148,7 @@ templates:
               - '*[sS]ample*'
             include_files:
               - '*.txt'
-            thetvdb_lookup: yes
+            # thetvdb_lookup: yes
             include_subs: yes
       tv:
         # http://flexget.com/wiki/Plugins/series/identified_by
