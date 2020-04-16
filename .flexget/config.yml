@@ -155,6 +155,9 @@ templates:
         # identified_by: auto
         # ep_regexp: (\d\d\d)
         # name_regexp: ^Name.* Season \d
+        - Cosmos Possible Worlds:
+            begin: S01E03
+            alternate_name: Cosmos Possible Worlds (2020)
         - Stan Lees Lucky Man:
             begin: S02E01
         - The Sinner:
