@@ -14,3 +14,7 @@ transmission:
   netrc: /home/username/.netrc
 exec:
   on_exit: /home/username/karpoke/scripts/transmission-add-trackings.sh
+opensubtitles:
+  username: username
+  password: p4$$w0rD
+

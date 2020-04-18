@@ -280,5 +280,9 @@ tasks:
       #   - esp
       exact_match: yes
       providers: [opensubtitles, thesubdb, podnapisi, addic7ed, tvsubtitles]
-      #single: no
+      # single: no
+      authentication:
+        opensubtitles:
+          username: '{? opensubtitles.username ?}'
+          password: '{? opensubtitles.password ?}'
 
