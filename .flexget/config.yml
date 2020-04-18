@@ -175,7 +175,8 @@ templates:
 
     exec:
       allow_background: Yes
-      on_exit: '{? exec.on_exit ?}'
+      on_exit:
+        phase: '{? exec.on_exit ?}'
 
     # https://flexget.com/Plugins/domain_delay
     domain_delay:
