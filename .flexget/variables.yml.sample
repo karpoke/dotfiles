@@ -19,3 +19,6 @@ opensubtitles:
   password: p4$$w0rD
 movies:
   download: /home/username/Downloads
+imdb:
+  user_id: ur123456
+  list: watchlist

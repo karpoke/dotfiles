@@ -2,7 +2,7 @@
 # execute (cron): flexget --cron execute
 # execute one task:
 #   flexget execute --task get-subtitles
-#   flexget execute --task search-series --discover-now
+#   flexget execute --task search-movies-series --discover-now
 # execute one task (test): flexget --text execute --task get-subtitles
 # get series list: flexget series list
 # show info: flexget series show NAME
@@ -31,7 +31,7 @@ schedules:
   - tasks: '*'
     interval:
       hours: 3
-  # - tasks: [search-series, get-subtitles]
+  # - tasks: [search-movies-series, get-subtitles]
   #   interval:
   #     minutes: 30 # weeks|days|hours|minutes
   #     jitter: 60
@@ -108,6 +108,8 @@ templates:
     torrent_alive:
       min_seeds: 7
       reject_for: 1 day
+
+    quality: hdtv 1081p
 
     # https://flexget.com/Plugins/reorder_quality
     # reorder_quality:
@@ -232,7 +234,7 @@ tasks:
 
   # new shiny automatic searching
   # warning: use OpenDNS: 208.67.222.222 and 208.67.220.220
-  search-series:
+  search-movies-series:
     template: tv
     verify_ssl_certificates: no
     # http://flexget.com/wiki/Plugins/discover
@@ -241,6 +243,7 @@ tasks:
         optimistic: 7 days
       what:
         - next_series_episodes: yes
+        - movie_list: imdb_movies
       # https://flexget.com/Searches
       # flexget plugins --interface search
       # flexget doc yts
@@ -263,6 +266,9 @@ tasks:
         # - newtorrents: yes
         # - torrentz: good
       # interval: 3 hour  # Search for expected episodes again every hour
+    list_match:
+      from:
+        - movie_list: imdb_movies
 
   get-subtitles:
     # https://flexget.com/Plugins/filesystem
@@ -289,48 +295,15 @@ tasks:
   populate-movie-list:
     # https://flexget.com/Plugins/imdb_watchlist
     imdb_watchlist:
-      user_id: ur116964762
+      user_id: '{? imdb.user_id ?}'
       # WARNING: If you are using a list other than the watchlist, ratings or
       # checkins, you currently have to look up the list id from imdb and use
       # that instead of the name.
-      list: ls099084602
+      list: '{? imdb.list ?}'
       # http://web.archive.org/web/20151204170544/http://www.science.co.il/language/locale-codes.asp
       force_language: en-us
     accept_all: yes
+    # https://flexget.com/Plugins/List/movie_list
     list_add:
       - movie_list: imdb_movies
 
-  discover-movies:
-    # http://flexget.com/wiki/Plugins/discover
-    discover:
-      what:
-        - movie_list: imdb_movies
-      # https://flexget.com/Searches
-      # flexget plugins --interface search
-      # flexget doc yts
-      from:
-        - 1337x: yes
-        - descargas2020: yes
-        - limetorrents:
-            category: tv
-            order_by: date
-        - rarbg:
-            category: [2, 18, 41, 49]
-            sorted_by: seeders
-            use_tvdb: True
-        - yts: yes
-        - piratebay:
-            category: tv
-            sort_by: seeds
-        # - argenteam:
-        #     force_subtitles: no
-        # - newtorrents: yes
-        # - torrentz: good
-      # interval: 3 hour  # Search for expected episodes again every hour
-
-    quality: hdtv 1080p
-    imdb_lookup: yes
-    list_match:
-      from:
-        - movie_list: imdb_movies
-    download: '{? movies.download ?}'
