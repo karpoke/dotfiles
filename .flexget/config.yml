@@ -109,7 +109,7 @@ templates:
       min_seeds: 7
       reject_for: 1 day
 
-    quality: hdtv 1081p
+    quality: hdtv 1080p
 
     # https://flexget.com/Plugins/reorder_quality
     # reorder_quality:
