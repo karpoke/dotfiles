@@ -255,14 +255,14 @@ tasks:
             sorted_by: seeders
             use_tvdb: True
         - yts: yes
-        # - argenteam:
-        #     force_subtitles: no
-        # - newtorrents: yes
         - piratebay:
             category: tv
             sort_by: seeds
+        # - argenteam:
+        #     force_subtitles: no
+        # - newtorrents: yes
         # - torrentz: good
-      interval: 3 hour  # Search for expected episodes again every hour
+      # interval: 3 hour  # Search for expected episodes again every hour
 
   get-subtitles:
     # https://flexget.com/Plugins/filesystem
@@ -286,3 +286,51 @@ tasks:
           username: '{? opensubtitles.username ?}'
           password: '{? opensubtitles.password ?}'
 
+  populate-movie-list:
+    # https://flexget.com/Plugins/imdb_watchlist
+    imdb_watchlist:
+      user_id: ur116964762
+      # WARNING: If you are using a list other than the watchlist, ratings or
+      # checkins, you currently have to look up the list id from imdb and use
+      # that instead of the name.
+      list: ls099084602
+      # http://web.archive.org/web/20151204170544/http://www.science.co.il/language/locale-codes.asp
+      force_language: en-us
+    accept_all: yes
+    list_add:
+      - movie_list: imdb_movies
+
+  discover-movies:
+    # http://flexget.com/wiki/Plugins/discover
+    discover:
+      what:
+        - movie_list: imdb_movies
+      # https://flexget.com/Searches
+      # flexget plugins --interface search
+      # flexget doc yts
+      from:
+        - 1337x: yes
+        - descargas2020: yes
+        - limetorrents:
+            category: tv
+            order_by: date
+        - rarbg:
+            category: [2, 18, 41, 49]
+            sorted_by: seeders
+            use_tvdb: True
+        - yts: yes
+        - piratebay:
+            category: tv
+            sort_by: seeds
+        # - argenteam:
+        #     force_subtitles: no
+        # - newtorrents: yes
+        # - torrentz: good
+      # interval: 3 hour  # Search for expected episodes again every hour
+
+    quality: hdtv 1080p
+    imdb_lookup: yes
+    list_match:
+      from:
+        - movie_list: imdb_movies
+    download: '{? movies.download ?}'

@@ -6,7 +6,7 @@ series:
   settings:
     tv:
       set:
-        path: /home/username/Movies
+        path: /home/username/Downloads
 telegram:
   bot_token: token
   username: username
@@ -17,4 +17,5 @@ exec:
 opensubtitles:
   username: username
   password: p4$$w0rD
-
+movies:
+  download: /home/username/Downloads
