@@ -1,5 +1,6 @@
 ddclient
 jdupes
+libmtp-runtime
 transmission-cli
 transmission-daemon
 transmission-remote-cli
