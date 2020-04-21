@@ -45,6 +45,7 @@ alias ln='ln -v'           # --verbose
 alias ls='ls --color=tty'  # --color when tty
 alias mkdir='mkdir -pv'    # --parent --verbose
 alias mv='mv -iv'          # --interactive --verbose
+alias ping='ping -c 4'     # count
 alias rm='rm -Iv'          # prompt once, --verbose
 alias rsync='rsync -hv'    #  --human-readable --verbose
 alias ssh='ssh -C'         # requests compression
