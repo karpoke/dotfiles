@@ -83,6 +83,7 @@ alias num_csv_columns="awk -F, 'NR==1{print NF}'"
 alias pbpaste='xclip -selection clipboard -o'
 alias pbcopy='xclip -selection clipboard; pbpaste | xclip -selection primary; pbpaste | xclip -selection secondary'
 alias perm='stat --printf "%a %n \n"'
+alias ppjson='python -m json.tool <'
 alias proxy_ssh_start='ssh -fN proxy_ssh'
 alias proxy_ssh_stop='ssh -O exit proxy_ssh'
 alias proxy_ssh_status='ssh -O check proxy_ssh'
