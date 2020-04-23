@@ -3,6 +3,7 @@ atop
 bleachbit
 brotli
 caca-utils
+chkrootkit
 convmv
 corkscrew
 ddrescue
@@ -40,6 +41,7 @@ lnav
 locate
 logwatch
 lvm2
+lynis
 mailutils
 mdadm
 mlocate
@@ -60,6 +62,7 @@ python-pip
 rdfind
 reiserfsprogs
 reptyr
+rkhunter
 scalpel
 shellcheck
 silversearcher-ag
@@ -73,6 +76,7 @@ tldr
 tmux
 tmuxinator
 tsocks
+unhide
 vim
 vnstat
 xautomation
