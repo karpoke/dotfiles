@@ -46,7 +46,7 @@ schedules:
   #       year: X
 
 templates:
-  tv:
+  common:
 
     # manipulate:
     #   - title: &the
@@ -72,11 +72,6 @@ templates:
         - '*.rar'
         - '*.zip'
         - '*password*'
-
-    # https://flexget.com/Plugins/content_size
-    content_size:
-      min: 300
-      max: 2000
 
     # http://flexget.com/wiki/Plugins/thetvdb_lookup
     thetvdb_lookup: yes
@@ -138,49 +133,25 @@ templates:
         - FRENCH
         - VOSTFR
 
-    # http://flexget.com/wiki/Plugins/series
-    # http://flexget.com/wiki/Cookbook/Series
-    series:
-      settings:
-        tv:
-          exact: yes
-          propers: 3 days
-          # https://flexget.com/Qualities#Requirements
-          quality: hdtv 1080p
-          set:
-            path: '{? series.settings.tv.set.path ?}'
-            # path: /mnt/data/Series/{{series_name}}
-            main_file_only: yes
-            # If the main file is NOT found it will exclude any file matching
-            # the patterns listed in exclude_files.
-            # If a main file IS found any *.txt file will be downloaded.
-            # Because include_subs is set any *.srt, *.sub, *.idx, *.ass, *.ssa
-            # will also be downloaded.
-            skip_files:
-              - '*.jpg'
-              - '*.nfo'
-              - '*.sfv'
-              - '*.url'
-              - '*[sS]ample*'
-            include_files:
-              - '*.txt'
-            # thetvdb_lookup: yes
-            include_subs: yes
-      tv:
-        # http://flexget.com/wiki/Plugins/series/identified_by
-        # identified_by: auto
-        # ep_regexp: (\d\d\d)
-        # name_regexp: ^Name.* Season \d
-        - Cosmos Possible Worlds:
-            begin: S01E03
-            alternate_name: Cosmos Possible Worlds (2020)
-        - Stan Lees Lucky Man:
-            begin: S02E01
-        - The Sinner:
-            # alternate_name: The Sinner (2017)
-            begin: S03E01
-        - The Walking Dead:
-            begin: S10E09
+    set:
+      path: '{? series.settings.tv.set.path ?}'
+      # path: /mnt/data/Series/{{series_name}}
+      main_file_only: yes
+      # If the main file is NOT found it will exclude any file matching
+      # the patterns listed in exclude_files.
+      # If a main file IS found any *.txt file will be downloaded.
+      # Because include_subs is set any *.srt, *.sub, *.idx, *.ass, *.ssa
+      # will also be downloaded.
+      skip_files:
+        - '*.jpg'
+        - '*.nfo'
+        - '*.sfv'
+        - '*.url'
+        - '*[sS]ample*'
+      include_files:
+        - '*.txt'
+      # thetvdb_lookup: yes
+      include_subs: yes
 
     # http://flexget.com/wiki/Plugins/transmission
     # pip install transmissionrpc
@@ -262,17 +233,44 @@ tasks:
     #            format: '.'
     #   strict: no
 
-  # new shiny automatic searching
   # warning: use OpenDNS: 208.67.222.222 and 208.67.220.220
-  search-movies-series:
-    template: tv
+  search-series:
+    template: common
     verify_ssl_certificates: no
+    # http://flexget.com/wiki/Plugins/series
+    # http://flexget.com/wiki/Cookbook/Series
+    series:
+      settings:
+        tv:
+          exact: yes
+          propers: 3 days
+          # https://flexget.com/Plugins/content_size
+          content_size:
+            min: 300
+            max: 2000
+      tv:
+        # http://flexget.com/wiki/Plugins/series/identified_by
+        # identified_by: auto
+        # ep_regexp: (\d\d\d)
+        # name_regexp: ^Name.* Season \d
+        - Cosmos Possible Worlds:
+            begin: S01E03
+            alternate_name: Cosmos Possible Worlds (2020)
+        - Stan Lees Lucky Man:
+            begin: S02E01
+        - The Sinner:
+            # alternate_name: The Sinner (2017)
+            begin: S03E01
+        - The Walking Dead:
+            begin: S10E09
+
+
     # http://flexget.com/wiki/Plugins/discover
     discover:
+      template: common
       release_estimations:
         optimistic: 7 days
       what:
-        - next_series_episodes: yes
         - movie_list: imdb_movies
       # https://flexget.com/Searches
       # flexget plugins --interface search
@@ -288,17 +286,51 @@ tasks:
             sorted_by: seeders
             use_tvdb: True
         - yts: yes
-        - piratebay:
-            category: tv
-            sort_by: seeds
+        # - piratebay:
+        #     category: tv
+        #     sort_by: seeds
         # - argenteam:
         #     force_subtitles: no
         # - newtorrents: yes
         # - torrentz: good
-      # interval: 3 hour  # Search for expected episodes again every hour
+
+  search-movies:
+    # http://flexget.com/wiki/Plugins/discover
+    discover:
+      release_estimations:
+        optimistic: 7 days
+      what:
+        - movie_list: imdb_movies
+      # https://flexget.com/Searches
+      # flexget plugins --interface search
+      # flexget doc yts
+      from:
+        - 1337x: yes
+        - descargas2020: yes
+        - limetorrents:
+            category: tv
+            order_by: date
+        - rarbg:
+            category: [2, 18, 41, 49]
+            sorted_by: seeders
+            use_tvdb: True
+        - yts: yes
+        # - piratebay:
+        #     category: tv
+        #     sort_by: seeds
+        # - argenteam:
+        #     force_subtitles: no
+        # - newtorrents: yes
+        # - torrentz: good
+
+    # https://flexget.com/Plugins/List/list_match
     list_match:
       from:
         - movie_list: imdb_movies
+    # https://flexget.com/Plugins/content_size
+    content_size:
+      min: 700
+      max: 4000
 
   get-subtitles:
     # https://flexget.com/Plugins/filesystem
