@@ -84,6 +84,12 @@ templates:
     # https://flexget.com/Plugins/imdb_lookup
     imdb_lookup: yes
 
+    # https://flexget.com/Plugins/tmdb_lookup
+    tmdb_lookup: yes
+
+    # https://flexget.com/Plugins/tvmaze_lookup
+    tvmaze_lookup: yes
+
     # https://flexget.com/Plugins/require_field
     # require_field:
     #   - tvdb_first_air_date
