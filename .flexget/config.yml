@@ -1,9 +1,11 @@
 # check config: flexget check
 # execute (cron): flexget --cron execute
 # execute one task:
-#   flexget execute --task get-subtitles
-#   flexget execute --task search-movies-series --discover-now
-# execute one task (test): flexget --text execute --task get-subtitles
+#   flexget execute --task populate-movie-list --discover-now
+#   flexget execute --task search-movies --discover-now
+#   flexget execute --task search-series --discover-now
+#   flexget execute --task get-subtitles --discover-now
+# reload config while running daemon: flexget daemon reload
 # get series list: flexget series list
 # show info: flexget series show NAME
 # download again:
@@ -73,17 +75,20 @@ templates:
         - '*.zip'
         - '*password*'
 
-    # http://flexget.com/wiki/Plugins/thetvdb_lookup
-    thetvdb_lookup: yes
-
     # https://flexget.com/Plugins/imdb_lookup
     imdb_lookup: yes
+
+    # http://flexget.com/wiki/Plugins/thetvdb_lookup
+    thetvdb_lookup: yes
 
     # https://flexget.com/Plugins/tmdb_lookup
     tmdb_lookup: yes
 
     # https://flexget.com/Plugins/tvmaze_lookup
     tvmaze_lookup: yes
+
+    # https://flexget.com/Plugins/trakt_lookup
+    trakt_lookup: yes
 
     # https://flexget.com/Plugins/require_field
     # require_field:
@@ -172,19 +177,23 @@ templates:
       entries:
         # https://flexget.com/Entry#Knownfields
         message: |+
-          *Download started*
+          Download started...  {{quality|d('')}} {{content_size}}
+
           {% if series_name is defined -%}
-              *{{series_name}}* - {{series_id}} - {{quality|d('')}}
+              *{{series_name}}* - {{series_id}}
               *{{tvmaze_episode_name|d(tvdb_ep_name)|d('')}}*
-              [Image]({{tvmaze_series_original_image|replace("_", "%5F")}})
+              ⏲️{{tvmaze_series_runtime|default(tvdb_runtime)}}min ⭐{{tvdb_ep_rating|default('-')}}/10
               [Show page]({{tvmaze_series_url|replace("_", "%5F")}})
+              [Image]({{tvmaze_series_original_image|replace("_", "%5F")}})
           {% elif imdb_name is defined -%}
-              *{{imdb_name}}* - ({{imdb_year}}) - {{quality|d('')}}
-              {{imdb_score}}/10 - {{imdb_votes}} votes
-              {{imdb_genres|join(', ')|title}}
-              *Plot:* {{imdb_plot_outline}}
+              *{{imdb_name}}* _{{tmdb_tagline}}_ ({{imdb_year}})
+              ⏲️{{tmdb_runtime}}min ⭐{{imdb_score|default(tmdb_rating)}}/10 - {{imdb_votes|default(tmdb_votes)}} votes
+              *Genres:* {{imdb_genres|default(tmdb_genres)|join(', ')|title}}
+              *Directors:* {{imdb_directors|join(', ')|title}}
+              *Actors:* {{imdb_actors|join(', ')|title}}
+              [IMDb]({{imdb_url|d('')}}) [TMDb]({{tmdb_homepage|d('')}})
               [Image]({{tmdb_posters[0]|replace("_", "%5F")}})
-              [Movie Page]({{imdb_url|d('')}})
+              {{imdb_plot_outline}}
           {% else -%}
               {{title}}
           {%- endif -%}
