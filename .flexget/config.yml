@@ -237,6 +237,10 @@ tasks:
   search-series:
     template: common
     verify_ssl_certificates: no
+    # https://flexget.com/Plugins/content_size
+    content_size:
+      min: 300
+      max: 2000
     # http://flexget.com/wiki/Plugins/series
     # http://flexget.com/wiki/Cookbook/Series
     series:
@@ -244,10 +248,6 @@ tasks:
         tv:
           exact: yes
           propers: 3 days
-          # https://flexget.com/Plugins/content_size
-          content_size:
-            min: 300
-            max: 2000
       tv:
         # http://flexget.com/wiki/Plugins/series/identified_by
         # identified_by: auto
