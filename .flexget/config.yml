@@ -267,7 +267,6 @@ tasks:
 
     # http://flexget.com/wiki/Plugins/discover
     discover:
-      template: common
       release_estimations:
         optimistic: 7 days
       what:
@@ -295,6 +294,7 @@ tasks:
         # - torrentz: good
 
   search-movies:
+    template: common
     # http://flexget.com/wiki/Plugins/discover
     discover:
       release_estimations:
