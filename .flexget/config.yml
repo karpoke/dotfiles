@@ -115,12 +115,20 @@ templates:
       min_seeds: 7
       reject_for: 1 day
 
-    quality: hdtv 1080p
+    # https://flexget.com/Qualities#Requirements
+    quality:
+      - hdtv
+      - 720p
+      - 720p hdtv+
+      - 360p-720p hdtv divx|xvid
+      - 720p+ hdtv
 
     # https://flexget.com/Plugins/reorder_quality
     # reorder_quality:
     #   webdl:
-    #     above: dvdrip
+    #     above: hdtv
+    #   webrip:
+    #     above: hdtv
 
     # http://flexget.com/wiki/Plugins/regexp
     regexp:
@@ -166,7 +174,6 @@ templates:
         - Cosmos Possible Worlds:
             begin: S01E03
             alternate_name: Cosmos Possible Worlds (2020)
-            quality: hdtv 720p+
         - Stan Lees Lucky Man:
             begin: S02E01
         - The Sinner:
