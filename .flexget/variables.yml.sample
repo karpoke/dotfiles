@@ -2,11 +2,8 @@
 email:
   from: from@example.com
   to: to@example.com
-series:
-  settings:
-    tv:
-      set:
-        path: /home/username/Downloads
+downloads:
+  path: /home/username/Downloads
 telegram:
   bot_token: token
   username: username
@@ -17,8 +14,6 @@ exec:
 opensubtitles:
   username: username
   password: p4$$w0rD
-movies:
-  download: /home/username/Downloads
 imdb:
   user_id: ur123456
   list: watchlist

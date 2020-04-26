@@ -134,7 +134,7 @@ templates:
         - VOSTFR
 
     set:
-      path: '{? series.settings.tv.set.path ?}'
+      path: '{? downloads.path ?}'
       # path: /mnt/data/Series/{{series_name}}
       main_file_only: yes
       # If the main file is NOT found it will exclude any file matching
@@ -335,7 +335,7 @@ tasks:
   get-subtitles:
     # https://flexget.com/Plugins/filesystem
     filesystem:
-      path: '{? series.settings.tv.set.path ?}'
+      path: '{? downloads.path ?}'
       regexp: '.*\.(avi|mkv|mp4)$'
       recursive: yes
     accept_all: yes
