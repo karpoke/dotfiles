@@ -177,7 +177,7 @@ templates:
       entries:
         # https://flexget.com/Entry#Knownfields
         message: |+
-          Download started...  {{quality|d('')}} {{content_size}}
+          Download started...  {{quality|d('')}} {{content_size}}MB
 
           {% if series_name is defined -%}
               *{{series_name}}* - {{series_id}}
