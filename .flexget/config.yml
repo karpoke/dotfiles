@@ -191,7 +191,8 @@ templates:
               *Genres:* {{imdb_genres|default(tmdb_genres)|join(', ')|title}}
               *Directors:* {{imdb_directors|map(attribute='imdbid')|join(', ')|title}}
               *Actors:* {{imdb_actors|map(attribute='imdbid')|join(', ')|title}}
-              [IMDb]({{imdb_url|d('')}}) [TMDb]({{tmdb_homepage|d('')}})
+              [IMDb]({{imdb_url|d('')}})
+              [TMDb]({{tmdb_homepage|d('')}})
               [Image]({{tmdb_posters[0]|replace("_", "%5F")}})
               {{imdb_plot_outline}}
           {% else -%}
