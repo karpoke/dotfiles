@@ -189,8 +189,8 @@ templates:
               *{{imdb_name}}* _{{tmdb_tagline}}_ ({{imdb_year}})
               ⏲️{{tmdb_runtime}}min ⭐{{imdb_score|default(tmdb_rating)}}/10 - {{imdb_votes|default(tmdb_votes)}} votes
               *Genres:* {{imdb_genres|default(tmdb_genres)|join(', ')|title}}
-              *Directors:* {{imdb_directors|join(', ')|title}}
-              *Actors:* {{imdb_actors|join(', ')|title}}
+              *Directors:* {{imdb_directors|map(attribute='imdbid')|join(', ')|title}}
+              *Actors:* {{imdb_actors|map(attribute='imdbid')|join(', ')|title}}
               [IMDb]({{imdb_url|d('')}}) [TMDb]({{tmdb_homepage|d('')}})
               [Image]({{tmdb_posters[0]|replace("_", "%5F")}})
               {{imdb_plot_outline}}
