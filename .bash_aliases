@@ -114,6 +114,8 @@ check_root () { if [ "$(id -u)" -ne 0 ]; then echo "ERROR: You must be root user
 clean_repeated_history () { tac "$HISTFILE" | awk '!x[$0]++' | tac | sponge "$HISTFILE" && history -c && history -r; }
 # another way of removing dupes keeping the last: history | sort -k2 -k1,1nr | uniq -f1 | sort -n | cut -f2
 cmd2img () { convert -font courier -pointsize 12 -background black -fill white label:"$("$@")" -trim output.png; }
+# https://gist.github.com/kamermans/1076290
+fail2ban_client_status () { fail2ban-client status | tail -1 | awk -F: '{print $2}' | sed 's/,//g' | xargs -n1 fail2ban-client status; }
 ffind () { find . -iname "*$**"; }
 hr(){ printf '%0*d' "$(tput cols)" | tr 0 "${1:-_}"; }
 http_compression () { curl -s -I -H "Accept-Encoding: br,gzip,deflate" -A "firefox" "$1" | grep -i "Content-Encoding"; }
