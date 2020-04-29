@@ -131,6 +131,7 @@ show_fonts () { mkdir -p /tmp/fonts; convert -list font | awk -F: '/^\ *Font: /{
 slugify () { echo "$*" | iconv -t ascii//TRANSLIT | sed -E 's/[^a-zA-Z0-9]+/-/g' | sed -E 's/^-+|-+$//g' | tr '[:upper:]' '[:lower:]'; }
 t () { if tmux list-sessions >/dev/null; then tmux attach; else tmux; fi; }
 vim_encoding_sample () { vim 'https://www.cl.cam.ac.uk/~mgk25/ucs/examples/UTF-8-demo.txt'; }
+youtube-dl-audio () { youtube-dl --quiet --format best --extract-audio --audio-format best --metadata-from-title "%(artist)s - %(title)s" --output "%(title)s.%(ext)s" "$1"; }
 
 test_slugify () {
     # some punctuation
