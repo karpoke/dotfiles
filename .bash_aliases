@@ -107,32 +107,32 @@ alias last=__last
 alias vim=__vim
 
 # one-liner utilities
-function alert_when_site_is_up () { while ! curl -m 60 "$1"; do sleep 60; done; play -q "$DOTFILES_DIR/hostdown.wav" 2>/dev/null; }
-function bak () { [ -r "$1" ] && mv "$1"{,.bak}; }
-function check_http_https_ports () { ss -o state established '( sport = :http or sport = :https )'; }
-function check_root () { if [ "$(id -u)" -ne 0 ]; then echo "ERROR: You must be root user to run this program"; exit; fi; }
-function clean_repeated_history () { tac "$HISTFILE" | awk '!x[$0]++' | tac | sponge "$HISTFILE" && history -c && history -r; }
+alert_when_site_is_up () { while ! curl -m 60 "$1"; do sleep 60; done; play -q "$DOTFILES_DIR/hostdown.wav" 2>/dev/null; }
+bak () { [ -r "$1" ] && mv "$1"{,.bak}; }
+check_http_https_ports () { ss -o state established '( sport = :http or sport = :https )'; }
+check_root () { if [ "$(id -u)" -ne 0 ]; then echo "ERROR: You must be root user to run this program"; exit; fi; }
+clean_repeated_history () { tac "$HISTFILE" | awk '!x[$0]++' | tac | sponge "$HISTFILE" && history -c && history -r; }
 # another way of removing dupes keeping the last: history | sort -k2 -k1,1nr | uniq -f1 | sort -n | cut -f2
-function cmd2img () { convert -font courier -pointsize 12 -background black -fill white label:"$("$@")" -trim output.png; }
-function ffind () { find . -iname "*$**"; }
-function hr(){ printf '%0*d' "$(tput cols)" | tr 0 "${1:-_}"; }
-function http_compression { curl -s -I -H "Accept-Encoding: br,gzip,deflate" -A "firefox" "$1" | grep -i "Content-Encoding"; }
-function http_status () { curl -s -o /dev/null -w "%{http_code}" -A "firefox" "$1"; }
-function ipinfo () { curl -s "http://ipinfo.io/$1"; }
-function lnp () { mkdir -p "$(dirname "$2")" && ln -s "$1" "$2"; }
-function mping(){ command ping "$1" | awk -F[=\ ] '/me=/{t=$(NF-1);f=3000-14*log(t^20);c="play -q -n synth 1 pl " f;print $0;system(c)}'; }
-function pyimport () { python -c "import $1"; }
-function pypath () { python -c "import os, $1; print(os.path.dirname($1.__file__))"; }
-function pysslcertspath () { python -c "import ssl; print(ssl.get_default_verify_paths())"; }
-function random_string () { local -i LEN="${1:-12}"; </dev/urandom tr -dc '[:print:]' | tr -d ''\''\\"' | head -c "$LEN"; }
-function random_uuid_to_dev () { dev="$1"; sudo umount /dev/"$dev" && tune2fs /dev/"$dev" -U random; }
-function rip_audio () { output="${1%.*}-ripped.${1##*.}"; mplayer -ao pcm -vo null -vc dummy -dumpaudio -dumpfile "$output" "$1"; }
-function show_fonts () { mkdir -p /tmp/fonts; convert -list font | awk -F: '/^\ *Font: /{print substr($NF,2)}' | while read -r font ; do convert -size 600x400 xc: -annotate +10+10 "$font" -gravity center -pointsize 42 -font "$font" -annotate +0+0 'ABCDEF\nabcdef\n012345\n!@$%%' -flatten "/tmp/fonts/$font".png ; done; }
-function slugify () { echo "$*" | iconv -t ascii//TRANSLIT | sed -E 's/[^a-zA-Z0-9]+/-/g' | sed -E 's/^-+|-+$//g' | tr '[:upper:]' '[:lower:]'; }
-function t () { if tmux list-sessions >/dev/null; then tmux attach; else tmux; fi; }
-function vim_encoding_sample () { vim 'https://www.cl.cam.ac.uk/~mgk25/ucs/examples/UTF-8-demo.txt'; }
+cmd2img () { convert -font courier -pointsize 12 -background black -fill white label:"$("$@")" -trim output.png; }
+ffind () { find . -iname "*$**"; }
+hr(){ printf '%0*d' "$(tput cols)" | tr 0 "${1:-_}"; }
+http_compression () { curl -s -I -H "Accept-Encoding: br,gzip,deflate" -A "firefox" "$1" | grep -i "Content-Encoding"; }
+http_status () { curl -s -o /dev/null -w "%{http_code}" -A "firefox" "$1"; }
+ipinfo () { curl -s "http://ipinfo.io/$1"; }
+lnp () { mkdir -p "$(dirname "$2")" && ln -s "$1" "$2"; }
+mping(){ command ping "$1" | awk -F[=\ ] '/me=/{t=$(NF-1);f=3000-14*log(t^20);c="play -q -n synth 1 pl " f;print $0;system(c)}'; }
+pyimport () { python -c "import $1"; }
+pypath () { python -c "import os, $1; print(os.path.dirname($1.__file__))"; }
+pysslcertspath () { python -c "import ssl; print(ssl.get_default_verify_paths())"; }
+random_string () { local -i LEN="${1:-12}"; </dev/urandom tr -dc '[:print:]' | tr -d ''\''\\"' | head -c "$LEN"; }
+random_uuid_to_dev () { dev="$1"; sudo umount /dev/"$dev" && tune2fs /dev/"$dev" -U random; }
+rip_audio () { output="${1%.*}-ripped.${1##*.}"; mplayer -ao pcm -vo null -vc dummy -dumpaudio -dumpfile "$output" "$1"; }
+show_fonts () { mkdir -p /tmp/fonts; convert -list font | awk -F: '/^\ *Font: /{print substr($NF,2)}' | while read -r font ; do convert -size 600x400 xc: -annotate +10+10 "$font" -gravity center -pointsize 42 -font "$font" -annotate +0+0 'ABCDEF\nabcdef\n012345\n!@$%%' -flatten "/tmp/fonts/$font".png ; done; }
+slugify () { echo "$*" | iconv -t ascii//TRANSLIT | sed -E 's/[^a-zA-Z0-9]+/-/g' | sed -E 's/^-+|-+$//g' | tr '[:upper:]' '[:lower:]'; }
+t () { if tmux list-sessions >/dev/null; then tmux attach; else tmux; fi; }
+vim_encoding_sample () { vim 'https://www.cl.cam.ac.uk/~mgk25/ucs/examples/UTF-8-demo.txt'; }
 
-function test_slugify () {
+test_slugify () {
     # some punctuation
     test "$(slugify ',.;:_-+─=ºª¡!"·$%&/()[]{}¿?|@#~½¬')" == "oa-1-2" &&
     # some non-ascii charcters
@@ -150,7 +150,7 @@ alias j='jump'
 # `..` go up one directory
 # `.. 3` go up three directories
 # `.. foo` go up to the most upper directory whose name is `foo`
-function .. () {
+.. () {
     local n
     local oldpwd
     local path
@@ -173,7 +173,7 @@ function .. () {
 }
 
 # go to directory even if a file is passed as param
-function __cd () {
+__cd () {
     local path
     if [ -f "$1" ]; then
         path="$(dirname "$1")"
@@ -188,7 +188,7 @@ function __cd () {
 # to make sure special and critical system files are opened with the
 # addecuated commands. also make it easier open files into the
 # desired line or the most recent opened file
-function __vim () {
+__vim () {
     local fn
     local ln
     local re
@@ -221,7 +221,7 @@ function __vim () {
     fi
 }
 
-function __cat () {
+__cat () {
     if [ "$#" -eq 1 ] && [ -d "$1" ]; then
         ls "$1"
     elif [ "$#" -eq 0 ]; then
@@ -231,7 +231,7 @@ function __cat () {
     fi
 }
 
-function __df () {
+__df () {
     if command -v pydf; then
         pydf "$@"
     else
@@ -239,16 +239,16 @@ function __df () {
     fi
 }
 
-function __grep () {
+__grep () {
     /bin/grep --color -i --exclude-dir={.bzr,CVS,.git,.hg,.svn} "$@" | /bin/grep -v grep
 }
 
-function __last () {
+__last () {
     # show `last` results in reverse order
     /usr/bin/last "$@" | tac
 }
 
-function reattach () {
+reattach () {
     if [ "$(/bin/cat /proc/sys/kernel/yama/ptrace_scope)" == "1" ]; then
         echo "ERROR: to allow non-root users to reattach a process in Ubuntu:"
         echo "  $ echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope"
@@ -268,7 +268,7 @@ function reattach () {
 
 # to avoid `..` to be aliased by other scripts. this must be at the end of the
 # file
-function alias () {
+alias () {
     if [[ "$1" =~ \.\.=.+ ]]; then
         false
     else
