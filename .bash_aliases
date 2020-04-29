@@ -132,6 +132,9 @@ rip_audio () { output="${1%.*}-ripped.${1##*.}"; mplayer -ao pcm -vo null -vc du
 show_fonts () { mkdir -p /tmp/fonts; convert -list font | awk -F: '/^\ *Font: /{print substr($NF,2)}' | while read -r font ; do convert -size 600x400 xc: -annotate +10+10 "$font" -gravity center -pointsize 42 -font "$font" -annotate +0+0 'ABCDEF\nabcdef\n012345\n!@$%%' -flatten "/tmp/fonts/$font".png ; done; }
 slugify () { echo "$*" | iconv -t ascii//TRANSLIT | sed -E 's/[^a-zA-Z0-9]+/-/g' | sed -E 's/^-+|-+$//g' | tr '[:upper:]' '[:lower:]'; }
 t () { if tmux list-sessions >/dev/null; then tmux attach; else tmux; fi; }
+# perl do not convert ( and ) to %28 and %29
+# perl -MURI::Escape -e 'print uri_escape($ARGV[0]);' "$*"
+uri_encode () { python -c "from __future__ import print_function; import urllib; print(urllib.quote('''$*'''), end='')"; }
 vim_encoding_sample () { vim 'https://www.cl.cam.ac.uk/~mgk25/ucs/examples/UTF-8-demo.txt'; }
 youtube-dl-audio () { youtube-dl --quiet --format best --extract-audio --audio-format best --metadata-from-title "%(artist)s - %(title)s" --output "%(title)s.%(ext)s" "$1"; }
 
