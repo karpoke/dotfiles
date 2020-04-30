@@ -232,7 +232,7 @@ tasks:
   eztv.ag:
     # https://flexget.com/Plugins/rss
     rss: https://eztv.ag/ezrss.xml
-    template: tv
+    template: common
     # content_size:
     #   min: 250
     #   max: 400
