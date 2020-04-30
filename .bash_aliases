@@ -121,6 +121,7 @@ hr(){ printf '%0*d' "$(tput cols)" | tr 0 "${1:-_}"; }
 http_compression () { curl -s -I -H "Accept-Encoding: br,gzip,deflate" -A "firefox" "$1" | grep -i "Content-Encoding"; }
 http_status () { curl -s -o /dev/null -w "%{http_code}" -A "firefox" "$1"; }
 ipinfo () { curl -s "http://ipinfo.io/$1"; }
+list_units_failed () { sudo systemctl list-units --failed; }
 lnp () { mkdir -p "$(dirname "$2")" && ln -s "$1" "$2"; }
 mping(){ command ping "$1" | awk -F[=\ ] '/me=/{t=$(NF-1);f=3000-14*log(t^20);c="play -q -n synth 1 pl " f;print $0;system(c)}'; }
 pyimport () { python -c "import $1"; }
