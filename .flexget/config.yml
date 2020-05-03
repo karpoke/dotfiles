@@ -191,14 +191,13 @@ templates:
               *Genres:* {{imdb_genres|default(tmdb_genres)|join(', ')|title}}
               *Directors:* {{imdb_directors.values()|join(', ')|title}}
               *Actors:* {{imdb_actors.values()|join(', ')|title}}
-              [IMDb]({{imdb_url|d('')}})
-              [TMDb]({{tmdb_homepage|d('')}})
               [Image]({{tmdb_posters[0]|replace("_", "%5F")}})
+              [IMDb]({{imdb_url|d('')}})
+              {% if tmdb_homepage %}[{{tmdb_homepage}}]({{tmdb_homepage}}){% endif -%}
               {{imdb_plot_outline}}
           {% else -%}
               {{title}}
           {%- endif -%}
-        # message: 'Downloading: {{series_name}} {{series_id}} ⭐{{tvdb_rating|default(imdb_score)}} ⏲️{{tvdb_runtime}}min'
         via:
           # https://flexget.com/Plugins/Notifiers/telegram
           # pip install python-telegram-bot
