@@ -128,6 +128,7 @@ pyimport () { python -c "import $1"; }
 pypath () { python -c "import os, $1; print(os.path.dirname($1.__file__))"; }
 pysslcertspath () { python -c "import ssl; print(ssl.get_default_verify_paths())"; }
 random_string () { local -i LEN="${1:-12}"; </dev/urandom tr -dc '[:print:]' | tr -d ''\''\\"' | head -c "$LEN"; }
+# another way: </dev/urandom | openssl sha1 | awk '{print $2}'
 random_uuid_to_dev () { dev="$1"; sudo umount /dev/"$dev" && tune2fs /dev/"$dev" -U random; }
 rip_audio () { output="${1%.*}-ripped.${1##*.}"; mplayer -ao pcm -vo null -vc dummy -dumpaudio -dumpfile "$output" "$1"; }
 show_fonts () { mkdir -p /tmp/fonts; convert -list font | awk -F: '/^\ *Font: /{print substr($NF,2)}' | while read -r font ; do convert -size 600x400 xc: -annotate +10+10 "$font" -gravity center -pointsize 42 -font "$font" -annotate +0+0 'ABCDEF\nabcdef\n012345\n!@$%%' -flatten "/tmp/fonts/$font".png ; done; }

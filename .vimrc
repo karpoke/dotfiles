@@ -10,6 +10,16 @@
 " * refactorize
 " * autocomplete: YouCompleteMe
 " * snippets
+"
+" resize windows automatically: ^w=
+" jump to the matching bracket/brace: %
+" indent/unindent: >>, <<
+" fix indentation: =G
+" create a new tab: :tabnew
+" go to next tab: gt
+" go to previous tab: gT
+" close all other tabs besides the active one: :tabo
+" previous/next file: ^o, ^i
 
 " vundle install:
 "   $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
