@@ -39,7 +39,7 @@ command -v direnv > /dev/null && eval "$(direnv hook bash)"
 
 export WORKON_HOME="$HOME/.virtualenvs"
 # export VIRTUALENVWRAPPER_SCRIPT=/usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+# shellcheck disable=SC1091
 [ -r /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 
 # shellcheck disable=SC1090
