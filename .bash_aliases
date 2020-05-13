@@ -194,7 +194,7 @@ __cd () {
 }
 
 # to make sure special and critical system files are opened with the
-# addecuated commands. also make it easier open files into the
+# appropriate commands. also make it easier open files into the
 # desired line or the most recent opened file
 __vim () {
     local fn
