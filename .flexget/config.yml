@@ -193,7 +193,7 @@ templates:
               *Actors:* {{imdb_actors.values()|join(', ')|title}}
               [Image]({{tmdb_posters[0]|replace("_", "%5F")}})
               [IMDb]({{imdb_url|d('')}})
-              {% if tmdb_homepage %}[{{tmdb_homepage}}]({{tmdb_homepage}}){% endif -%}
+              {% if tmdb_homepage %}[{{tmdb_homepage}}]({{tmdb_homepage}}){% endif %}
               {{imdb_plot_outline}}
           {% else -%}
               {{title}}
