@@ -25,6 +25,7 @@ fonts-powerline
 foremost
 fswebcam
 gawk
+geoip-bin
 getmail4
 git
 gnupg2
@@ -58,6 +59,7 @@ nocache
 oathtool
 pgadmin4
 proxychains
+pwgen
 pydf
 python-pip
 rdfind
