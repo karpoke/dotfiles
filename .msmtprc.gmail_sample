@@ -3,7 +3,7 @@ defaults
 auth           on
 tls            on
 tls_trust_file /etc/ssl/certs/ca-certificates.crt
-logfile        ~/.msmtp.log
+logfile        $HOME/.msmtp.log
 
 # Gmail
 account        gmail
@@ -12,12 +12,12 @@ port           587
 from           username@gmail.com
 user           username
 # password      p4$$w0rD
-# passwordeval  "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.mail/.msmtp.credentials.gpg"
-passwordeval   "/bin/cat ~/.mail/.msmtp.credentials"
+# passwordeval  "gpg --quiet --for-your-eyes-only --no-tty --decrypt $HOME/.mail/.msmtp.credentials.gpg"
+passwordeval   "/bin/cat $HOME/.mail/.msmtp.credentials"
 
 # Set a default account
 account default : gmail
 
-aliases        ~/.msmtp-aliases
+aliases        $HOME/.msmtp-aliases
 
 # vim:filetype=msmtp
