@@ -54,6 +54,7 @@ alias xargs='xargs -r'     # --no-run-if-empty
 
 # shellcheck disable=SC2139 disable=SC1083
 alias best_ubuntu_server="curl -s http://mirrors.ubuntu.com/mirrors.txt | xargs -n1 -I {} sh -c 'echo $(curl -r 0-102400 -s -w %{speed_download} -o /dev/null {}/ls-lR.gz) {}' | sort -gr | head -3 | awk '{ print $2 }'"
+alias capture_desktop='ffmpeg -video_size 1024x768 -framerate 25 -f x11grab -i :0.0+100,200 output.mp4'
 alias ch644='find . -type f -exec chmod -R 644 {} \;'
 alias ch755='find . -type d -exec chmod -R 755 {} \;'
 alias ch664='find . -type f -exec chmod -R 664 {} \;'
