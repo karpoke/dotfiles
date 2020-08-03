@@ -38,6 +38,7 @@ alias apr='sudo apt purge'
 # add autocompletion for aliases
 complete -c apd apg aph api apr
 
+alias bc='bc -l'           # --mathlib
 alias cp='cp -i'           # --interactive
 alias curl='curl -s -C-'   # --silent --continue-at automatically
 alias dmesg='dmesg -wH'    # --follow --human
