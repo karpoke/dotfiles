@@ -4,3 +4,4 @@ chrome-gnome-shell
 # status menu using Alt. must be manually enabled with gnome tweak tool
 gnome-shell-extension-suspend-button
 gnome-tweak-tool
+xournal
