@@ -85,7 +85,7 @@ alias mnt='mount | awk -F'\'' '\'' '\''{ printf "%s\t%s\n",$1,$3; }'\'' | column
 alias myip='curl -A firefox -s https://www.ignaciocano.com/ip'
 alias num_csv_columns="awk -F, 'NR==1{print NF}'"
 alias pbpaste='xclip -selection clipboard -o'
-alias pbcopy='xclip -selection clipboard; pbpaste | xclip -selection primary; pbpaste | xclip -selection secondary'
+alias pbcopy='perl -pe "chomp if eof" | xclip -selection clipboard; pbpaste | xclip -selection primary; pbpaste | xclip -selection secondary'
 alias perm='stat --printf "%a %n \n"'
 alias ppjson='python -m json.tool <'
 alias proxy_ssh_start='ssh -fN proxy_ssh'
