@@ -41,7 +41,7 @@ complete -c apd apg aph api apr
 alias bc='bc -l'           # --mathlib
 alias cp='cp -i'           # --interactive
 alias curl='curl -s -C-'   # --silent --continue-at automatically
-alias dmesg='dmesg -wH'    # --follow --human
+alias dmesg='dmesg -wT'    # --follow --ctime
 alias ln='ln -v'           # --verbose
 alias ls='ls --color=tty'  # --color when tty
 alias mkdir='mkdir -pv'    # --parent --verbose
