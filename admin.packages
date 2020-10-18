@@ -38,6 +38,7 @@ iotop
 ipcalc
 keepassx
 libpam-dev
+libpam-tmpdir
 libssl-dev
 libxml2-dev
 lnav
