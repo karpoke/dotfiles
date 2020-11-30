@@ -55,4 +55,5 @@ export WORKON_HOME="$HOME/.virtualenvs"
 clean_repeated_history
 
 # learn about a command on each new shell open
-echo "Learn about a command:"; until whatis -s1,6,8 $(basename $(shuf -n1 -e /bin/* /sbin/* /usr/bin/* /usr/sbin/*)); do :; done
+echo "Learn about a command:"; until whatis -s1,6,8 "$(basename "$(shuf -n1 -e /bin/* /sbin/* /usr/bin/* /usr/sbin/*)")"; do :; done
+
