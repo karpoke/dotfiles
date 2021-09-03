@@ -84,3 +84,9 @@
     # finding the right commit
     abbr = "!sh -c 'git rev-list --all | grep ^$1 | while read commit; do git --no-pager log -n1 --pretty=format:\"%H %ci %an %s%n\" $commit; done' -"
 
+    # top ten contributors
+    top-ten = "!sh -c 'git shortlog -s --no-merges | sort -nk1 | tail'"
+
+    # number of commits
+    number-of-commits = "!sh -c 'git rev-list --no-merges --count HEAD'"
+
