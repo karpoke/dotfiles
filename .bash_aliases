@@ -26,6 +26,15 @@
 # show apps that use the internet connection: ss -p
 
 
+# to avoid `..` to be aliased by other scripts
+alias () {
+    if [[ "$1" =~ \.\.=.+ ]]; then
+        false
+    else
+        builtin alias "$@"
+    fi
+}
+
 # shortcuts
 alias apd='apt list --upgradable'
 alias apg='sudo apt upgrade'
@@ -299,12 +308,3 @@ explain () {
     fi
 }
 
-# to avoid `..` to be aliased by other scripts. this must be at the end of the
-# file
-alias () {
-    if [[ "$1" =~ \.\.=.+ ]]; then
-        false
-    else
-        builtin alias "$@"
-    fi
-}
