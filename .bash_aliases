@@ -125,7 +125,7 @@ cmd2img () { convert -font courier -pointsize 12 -background black -fill white l
 # https://gist.github.com/kamermans/1076290
 fail2ban_client_status () { fail2ban-client status | tail -1 | awk -F: '{print $2}' | sed 's/,//g' | xargs -n1 fail2ban-client status; }
 ffind () { find . -iname "*$**"; }
-hr(){ printf '%0*d' "$(tput cols)" | tr 0 "${1:-_}"; }
+hr(){ printf "%0$(tput cols)d" | tr 0 "${1:-_}"; }
 http_compression () { curl -s -I -H "Accept-Encoding: br,gzip,deflate" -A "firefox" "$1" | grep -i "Content-Encoding"; }
 http_status () { curl -s -o /dev/null -w "%{http_code}" -A "firefox" "$1"; }
 ipinfo () { curl -s "http://ipinfo.io/$1"; }
