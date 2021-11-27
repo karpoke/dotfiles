@@ -191,9 +191,9 @@ alias j='jump'
             path="$path/.."
             ((n--))
         done
-        builtin cd "$path"
+        builtin cd "$path" || return
     else
-        builtin cd "${PWD/$1*/$1}"
+        builtin cd "${PWD/$1*/$1}" || return
     fi
     OLDPWD="$oldpwd"
 }
@@ -203,11 +203,11 @@ __cd () {
     local path
     if [ -f "$1" ]; then
         path="$(dirname "$1")"
-        builtin cd "$path"
+        builtin cd "$path" || return
     elif [ -z "$1" ]; then
-        builtin cd
+        builtin cd || return
     else
-        builtin cd "$@"
+        builtin cd "$@" || return
     fi
 }
 
