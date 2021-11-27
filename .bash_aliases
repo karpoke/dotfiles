@@ -156,7 +156,7 @@ t () { if tmux list-sessions >/dev/null; then tmux attach; else tmux; fi; }
 uri_encode () { python -c "from __future__ import print_function; import urllib; print(urllib.quote('''$*'''), end='')"; }
 vim_encoding_sample () { vim 'https://www.cl.cam.ac.uk/~mgk25/ucs/examples/UTF-8-demo.txt'; }
 youtube-dl-audio () { youtube-dl --quiet --format best --extract-audio --audio-format best --metadata-from-title "%(artist)s - %(title)s" --output "%(title)s.%(ext)s" "$1"; }
-which_package () { dpkg -S "$(which "$1")"; }
+which_package () { dpkg -S "$(command -v "$1")"; }
 
 test_slugify () {
     # some punctuation
