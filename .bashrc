@@ -15,6 +15,11 @@ export PATH=$PATH:$SCRIPTS_DIR:$DOCKERIZED_APPS_DIR
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell
 
+# to move backward and forward through the history of lines starting with the
+# same prefix
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+
 # https://github.com/junegunn/fzf/
 # https://www.mankier.com/1/fzf
 # https://github.com/junegunn/blsd
