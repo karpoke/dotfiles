@@ -63,6 +63,6 @@ transmissionrpc==0.11
 tzlocal==1.4
 urllib3==1.26.5
 webencodings==0.5.1
-Werkzeug==0.15.6
+Werkzeug==2.2.3
 zipp==0.6.0
 zxcvbn-python==4.4.15
