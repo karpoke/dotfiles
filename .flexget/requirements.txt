@@ -58,7 +58,7 @@ stevedore==1.32.0
 subliminal==2.0.5
 tempora==1.8
 terminaltables==3.1.0
-tornado==6.3.2
+tornado==6.3.3
 transmissionrpc==0.11
 tzlocal==1.4
 urllib3==1.26.5
