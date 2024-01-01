@@ -11,6 +11,8 @@
     recurse = true
 [diff]
     tool = vimdiff
+    colormoved = "default"
+    colormovedws = "allow-indentation-change"
 [merge]
     tool = kdiff3
 [merge-tool "kdiff3"]
