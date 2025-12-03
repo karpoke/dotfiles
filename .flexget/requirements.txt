@@ -18,7 +18,7 @@ enzyme==0.4.1
 feedparser==5.2.1
 Flask==2.3.2
 Flask-Compress==1.4.0
-Flask-Cors==5.0.0
+Flask-Cors==6.0.0
 Flask-Login==0.4.0
 Flask-RESTful==0.3.6
 flask-restplus==0.10.1
